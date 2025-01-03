@@ -8,15 +8,20 @@ import SwiftUICore
  */
 public class KvColorPallet {
     
-    nonisolated(unsafe) public static var instance: KvColorPallet? = nil
+    nonisolated(unsafe) public static var instance: KvColorPallet = KvColorPallet()
+    public var appThemePallet: AppThemePallet? = nil
     
-    public init() {}
+    public init () {}
     
-    public static func initialize() -> KvColorPallet {
+    public init(basicColor: Color) {
+        let closestColor = ColorUtil.findClosestColor(givenColor: basicColor)
+        self.appThemePallet = self.generateThemeColorPallet(givenColor: closestColor)
+    }
+    
+    public static func initialize(basicColor: Color) {
         if instance == nil {
-            instance = KvColorPallet()
+            instance = KvColorPallet(basicColor: basicColor)
         }
-        return instance!
     }
     
     /**
