@@ -11,13 +11,28 @@ public class KvColorPallet {
     nonisolated(unsafe) public static var instance: KvColorPallet = KvColorPallet()
     public var appThemePallet: AppThemePallet? = nil
     
+    /**
+     * This is a basic initialization without a basic color.  When consumer use this initialization, in default KvColorPallet with not
+     * provide a theme color pallet. Consumer can generate their own by invoking `#generateThemeColorPallet(givenColor: KvColor)` method
+     * in the package.
+     */
     public init () {}
     
+    /**
+     * On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
+     * `basicColor` is mandatory parameter while initiate the library.
+     *
+     * Consumer who is using kv-color-pallet, will get a color pallet for the theme of the application
+     */
     public init(basicColor: Color) {
         let closestColor = ColorUtil.findClosestColor(givenColor: basicColor)
         self.appThemePallet = self.generateThemeColorPallet(givenColor: closestColor)
     }
     
+    /**
+     * KvColorPallet initialization. Consumer can use this to initialize the KvColorPallet from their application delegate if they need a
+     * Theme color pallet at the application start-up.
+     */
     public static func initialize(basicColor: Color) {
         if instance == nil {
             instance = KvColorPallet(basicColor: basicColor)
