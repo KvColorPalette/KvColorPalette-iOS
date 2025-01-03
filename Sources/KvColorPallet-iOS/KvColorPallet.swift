@@ -8,15 +8,26 @@ import SwiftUICore
  */
 public class KvColorPallet {
     
-    nonisolated(unsafe) public static var instance: KvColorPallet? = nil
+    nonisolated(unsafe) public static var instance: KvColorPallet = KvColorPallet()
+    nonisolated(unsafe) public static var appThemePallet: AppThemePallet? = nil
     
-    public init() {}
+    /**
+     * This is a basic initialization without a basic color.  When consumer use this initialization, in default KvColorPallet with not
+     * provide a theme color pallet. Consumer can generate their own by invoking `#generateThemeColorPallet(givenColor: KvColor)` method
+     * in the package.
+     */
+    public init () {}
     
-    public static func initialize() -> KvColorPallet {
-        if instance == nil {
-            instance = KvColorPallet()
-        }
-        return instance!
+    /**
+     * KvColorPallet initialization. Consumer can use this to initialize the KvColorPallet from their application delegate if they need a
+     * Theme color pallet at the application start-up.
+     *
+     * On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
+     * `basicColor` is mandatory parameter while initiate the library.
+     */
+    public static func initialize(basicColor: Color) {
+        let closestColor = ColorUtil.findClosestColor(givenColor: basicColor)
+        appThemePallet = instance.generateThemeColorPallet(givenColor: closestColor)
     }
     
     /**
