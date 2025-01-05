@@ -22,23 +22,27 @@ public class ThemeGenUtil {
     
     private static func generateLightThemeColorSet(closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
+            base: closestColor.color,
             primary: closestColor.color,
             secondary: generateLightSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateLightTeriaryColor(primaryColor: closestColor),
             background: generateLightBackgroundColor(primaryColor: closestColor),
             onPrimary: Color.white,
-            onSecondary: Color.white
+            onSecondary: Color.white,
+            shadow: Color.gray
         )
     }
     
     private static func generateDarkThemeColorSet(closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
+            base: closestColor.color,
             primary: generateDarkPrimaryColor(primaryColor: closestColor.color),
             secondary: generateDarkSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateDarkTeriaryColor(primaryColor: closestColor),
             background: generateDarkBackgroundColor(primaryColor: closestColor.color),
             onPrimary: Color.white,
-            onSecondary: Color.black
+            onSecondary: Color.black,
+            shadow: Color.white
         )
     }
     

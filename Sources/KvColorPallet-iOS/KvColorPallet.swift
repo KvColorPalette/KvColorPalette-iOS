@@ -1,6 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 import Foundation
+import UIKit
 import SwiftUICore
 
 /**
@@ -81,5 +82,89 @@ public class KvColorPallet {
      */
     public func generateThemeColorPallet(givenColor: KvColor) -> AppThemePallet {
         return ThemeGenUtil.generateThemeColorSet(givenColor: givenColor)
+    }
+}
+
+extension UIColor {
+    static var baseColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.base) : UIColor(KvColorPallet.appThemePallet!.light.base)
+        }
+    }
+    
+    static var primaryColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.primary) : UIColor(KvColorPallet.appThemePallet!.light.primary)
+        }
+    }
+    
+    static var secondaryColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.secondary) : UIColor(KvColorPallet.appThemePallet!.light.secondary)
+        }
+    }
+    
+    static var tertiaryColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.tertiary) : UIColor(KvColorPallet.appThemePallet!.light.tertiary)
+        }
+    }
+    
+    static var onPrimaryColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.onPrimary) : UIColor(KvColorPallet.appThemePallet!.light.onPrimary)
+        }
+    }
+    
+    static var onSecondaryColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.onSecondary) : UIColor(KvColorPallet.appThemePallet!.light.onSecondary)
+        }
+    }
+    
+    static var shadowColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.shadow) : UIColor(KvColorPallet.appThemePallet!.light.shadow)
+        }
+    }
+    
+    static var backgroundColor: UIColor {
+        return UIColor { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(KvColorPallet.appThemePallet!.dark.background) : UIColor(KvColorPallet.appThemePallet!.light.background)
+        }
+    }
+}
+
+public extension Color {
+    public static var baseColor: Color {
+        return Color(UIColor.baseColor)
+    }
+    
+    public static var primaryColor: Color {
+        return Color(UIColor.primaryColor)
+    }
+    
+    public static var secondaryColor: Color {
+        return Color(UIColor.secondaryColor)
+    }
+    
+    public static var tertiaryColor: Color {
+        return Color(UIColor.tertiaryColor)
+    }
+    
+    public static var onPrimaryColor: Color {
+        return Color(UIColor.onPrimaryColor)
+    }
+    
+    public static var onSecondaryColor: Color {
+        return Color(UIColor.onSecondaryColor)
+    }
+    
+    public static var shadowColor: Color {
+        return Color(UIColor.shadowColor)
+    }
+    
+    public static var backgroundColor: Color {
+        return Color(UIColor.backgroundColor)
     }
 }
