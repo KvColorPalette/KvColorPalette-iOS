@@ -11,18 +11,18 @@ import UIKit
 
 public class ThemeGenUtil {
     
-    internal static func generateThemeColorSet(givenColor: KvColor) -> AppThemePallet {
-        let closestColor = ColorUtil.findClosestColor(givenColor: givenColor.color)
+    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePallet {
+        let closestColor = ColorUtil.findClosestColor(givenColor: givenColor)
         
-        let lightColorSet = generateLightThemeColorSet(closestColor: closestColor)
-        let darkColorSet = generateDarkThemeColorSet(closestColor: closestColor)
+        let lightColorSet = generateLightThemeColorSet(givenColor: givenColor, closestColor: closestColor)
+        let darkColorSet = generateDarkThemeColorSet(givenColor: givenColor, closestColor: closestColor)
 
         return AppThemePallet(light: lightColorSet, dark: darkColorSet)
     }
     
-    private static func generateLightThemeColorSet(closestColor: KvColor) -> ThemeColorPallet {
+    private static func generateLightThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
-            base: closestColor.color,
+            base: givenColor,
             primary: closestColor.color,
             secondary: generateLightSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateLightTeriaryColor(primaryColor: closestColor),
@@ -33,9 +33,9 @@ public class ThemeGenUtil {
         )
     }
     
-    private static func generateDarkThemeColorSet(closestColor: KvColor) -> ThemeColorPallet {
+    private static func generateDarkThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
-            base: closestColor.color,
+            base: givenColor,
             primary: generateDarkPrimaryColor(primaryColor: closestColor.color),
             secondary: generateDarkSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateDarkTeriaryColor(primaryColor: closestColor),
