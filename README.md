@@ -41,20 +41,9 @@ targets: [
 
 # Usage
 After you integrated the `KvColorPallet-iOS` package, you can consume it as follows.
-If you wants to use this to generate your theme color pallet when your application start-up, then you can initiate the library in AppDelegate level.
-```
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Initiate the KvColorPallet - (Assume your application's basic collor is Color.red)
-    KvColorPallet.initialize(basicColor: .red)
-    return true
-}
-```
-After initiate the swift package as above, you can access generate theme from anywhere in your application as follows
-```
-KvColorPallet.appThemePallet // This returns the generate theme color pallet using .red color.
-```
 
-If you wants to consume all the other features in `KvColorPallet` then use singleton instance as follows
+### Basic Usage
+If you wants to consume basic features in `KvColorPallet` then use singleton instance as follows. This singleton instance allows consumers to access following basic functionalities.
 ```
 // Generate alpha color schem of given color
 KvColorPallet.instance.generateAlphaColorPallet(givenColor: MatPackage().matGold.color)
@@ -65,6 +54,37 @@ KvColorPallet.instance.generateColorPallet(givenColor: MatPackage().matGold)
 // Generate theme color pallet of given color
 KvColorPallet.instance.generateThemeColorPallet(givenColor: MatPackage().matGold)
 ```
+
+### Advance Usage
+If you wants to use `KvColorPallet-iOS` to generate your theme color pallet when your application start-up, then you have to initiate the library in AppDelegate level. 
+To initiate you have to pass one base color that you think your application will use. Use following code to initiate the library package.
+```
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // Initiate the KvColorPallet - (Assume your application's basic collor is Color.red)
+    KvColorPallet.initialize(basicColor: .red)
+    return true
+}
+```
+After initiate the swift package as above, you can access generate theme from anywhere in your application as extension in `Color` object in SwiftUI.
+```
+Color.themePallet // This returns the generate theme color pallet.
+```
+In this `Color.themePallet` you will have following color attributes.
+|Attribute    |light-theme |dark-theme  |Description   |
+|-------------|------------|------------|--------------|
+|.base        |original    |original    |This is the base color given by the user.   |
+|.primary     |available   |available   |Suggesting primary color. This color can use for buttons, major component etc.   |
+|.secondary   |available   |available   |Suggesting secondary color. For any the secondary components which should not use by primary color.   |
+|.tertiary    |available   |available   |Suggesting tertiary color.   |
+|.background  |available   |available   |Suggesting background color.   |
+|.onPrimary   |available   |available   |This is the color you can use on any component use primary color.   |
+|.onSecondary |available   |available   |This is the color you can use on any component use secondary color.   |
+|.shadow      |available   |available   |This is the color for your shadows.   |
+
+#### Note:
+To use above `Color.themePallet`, initialization of the library is mandatory item. Because even without initialization, you will see `Color.themePallet` attribute in your application, but all the colors it returns will be `.clear` color.
+Therefore, make sure to initiate the library.
+
 
 # Contribution
 We welcome contributions! Please fork the repository, make your changes, and submit a pull request. Ensure your code adheres to the established guidelines.
