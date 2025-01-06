@@ -1,6 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 import Foundation
+import UIKit
 import SwiftUICore
 
 /**
@@ -25,9 +26,9 @@ public class KvColorPallet {
      * On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
      * `basicColor` is mandatory parameter while initiate the library.
      */
-    public static func initialize(basicColor: Color) {
-        let closestColor = ColorUtil.findClosestColor(givenColor: basicColor)
-        appThemePallet = instance.generateThemeColorPallet(givenColor: closestColor)
+    public static func initialize(basicColor: KvColor) {
+        let closestColor = ColorUtil.findClosestColor(givenColor: basicColor.color)
+        appThemePallet = instance.generateThemeColorPallet(givenColor: closestColor.color)
     }
     
     /**
@@ -79,7 +80,7 @@ public class KvColorPallet {
      * @param givenColor The color to generate the theme color pallet for.
      * @return A theme color pallet.
      */
-    public func generateThemeColorPallet(givenColor: KvColor) -> AppThemePallet {
+    public func generateThemeColorPallet(givenColor: Color) -> AppThemePallet {
         return ThemeGenUtil.generateThemeColorSet(givenColor: givenColor)
     }
 }
