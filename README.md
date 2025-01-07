@@ -60,8 +60,8 @@ If you wants to use `KvColorPallet-iOS` to generate your theme color pallet when
 To initiate you have to pass one base color that you think your application will use. Use following code to initiate the library package.
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Initiate the KvColorPallet - (Assume your application's basic collor is Color.red)
-    KvColorPallet.initialize(basicColor: .red)
+    // Initiate the KvColorPallet - (Assume your application's basic collor is MatPackage().matDGreen)
+    KvColorPallet.initialize(basicColor: MatPackage().matDGreen)
     return true
 }
 ```
