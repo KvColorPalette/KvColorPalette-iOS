@@ -53,6 +53,44 @@ public class KvColorPallet {
         ]
     }
     
+    public func generateBrightnessColorPallet(givenColor: Color) -> [Color] {
+        let hue = givenColor.hsl.hue
+        let saturation = givenColor.hsl.saturation
+        let brightness = givenColor.hsl.brightness
+        
+        return [
+            Color(hue: hue, saturation: saturation, brightness: 1),
+            Color(hue: hue, saturation: saturation, brightness: 0.9),
+            Color(hue: hue, saturation: saturation, brightness: 0.8),
+            Color(hue: hue, saturation: saturation, brightness: 0.7),
+            Color(hue: hue, saturation: saturation, brightness: 0.6),
+            Color(hue: hue, saturation: saturation, brightness: 0.5),
+            Color(hue: hue, saturation: saturation, brightness: 0.4),
+            Color(hue: hue, saturation: saturation, brightness: 0.3),
+            Color(hue: hue, saturation: saturation, brightness: 0.2),
+            Color(hue: hue, saturation: saturation, brightness: 0.1),
+        ]
+    }
+    
+    public func generateSaturationColorPallet(givenColor: Color) -> [Color] {
+        let hue = givenColor.hsl.hue
+        let saturation = givenColor.hsl.saturation
+        let brightness = givenColor.hsl.brightness
+        
+        return [
+            Color(hue: hue, saturation: 1, brightness: brightness),
+            Color(hue: hue, saturation: 0.9, brightness: brightness),
+            Color(hue: hue, saturation: 0.8, brightness: brightness),
+            Color(hue: hue, saturation: 0.7, brightness: brightness),
+            Color(hue: hue, saturation: 0.6, brightness: brightness),
+            Color(hue: hue, saturation: 0.5, brightness: brightness),
+            Color(hue: hue, saturation: 0.4, brightness: brightness),
+            Color(hue: hue, saturation: 0.3, brightness: brightness),
+            Color(hue: hue, saturation: 0.2, brightness: brightness),
+            Color(hue: hue, saturation: 0.1, brightness: brightness),
+        ]
+    }
+    
     /**
      * Generate a list of colors with pre-defined color packages. According to the feeding color,
      * this method generate a list of colors.

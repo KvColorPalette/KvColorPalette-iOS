@@ -41,6 +41,21 @@ internal extension Color {
     }
     
     /**
+     * Separate hsl (hue, saturation and brightness) of the given color.
+     */
+    var hsl: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
+        var hue: CGFloat  = 0.0
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        
+        let uiColor = UIColor(self)
+        uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        
+        return (hue, saturation, brightness, alpha)
+    }
+    
+    /**
      * Return hex value of the color
      */
     var hex: String {
