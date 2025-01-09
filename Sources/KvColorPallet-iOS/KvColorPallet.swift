@@ -5,7 +5,7 @@ import UIKit
 import SwiftUICore
 
 /**
- * This is the kv-color-pallet android library.
+ * This is the KvColorPallet-iOS library.
  */
 public class KvColorPallet {
     
@@ -53,6 +53,13 @@ public class KvColorPallet {
         ]
     }
     
+    /**
+     * Generate a list of colors with brightness property change in given color. According to the feeding color,
+     * this method generate a list of colors with different brightnesses.
+     *
+     * @param givenColor The color to generate the brightness values for.
+     * @return A list of colors.
+     */
     public func generateBrightnessColorPallet(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation
@@ -72,6 +79,13 @@ public class KvColorPallet {
         ]
     }
     
+    /**
+     * Generate a list of colors with saturation property change in given color. According to the feeding color,
+     * this method generate a list of colors with different saturations.
+     *
+     * @param givenColor The color to generate the saturation values for.
+     * @return A list of colors.
+     */
     public func generateSaturationColorPallet(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation

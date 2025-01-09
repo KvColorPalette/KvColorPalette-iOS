@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  kv-ios-color-pallet
+//  KvColorPallet-iOS
 //
 //  Created by Kavimal Wijewardana on 12/31/24.
 //
