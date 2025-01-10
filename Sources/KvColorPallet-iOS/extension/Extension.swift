@@ -2,6 +2,8 @@
 //  Extension.swift
 //  KvColorPallet-iOS
 //
+//  These extensions are available only to internal library usage.
+//
 //  Created by Kavimal Wijewardana on 12/27/24.
 //
 import SwiftUICore
