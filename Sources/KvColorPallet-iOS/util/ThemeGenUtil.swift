@@ -40,6 +40,7 @@ public class ThemeGenUtil {
             primary: closestColor.color,
             secondary: generateLightSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateLightTeriaryColor(primaryColor: closestColor),
+            quaternary: closestColor.color, // This is for use light theme primary color dark theme contrast color
             background: generateLightBackgroundColor(primaryColor: closestColor),
             onPrimary: Color.white,
             onSecondary: Color.white,
@@ -61,6 +62,7 @@ public class ThemeGenUtil {
             primary: generateDarkPrimaryColor(primaryColor: closestColor.color),
             secondary: generateDarkSecondaryColor(primaryColor: closestColor.color),
             tertiary: generateDarkTeriaryColor(primaryColor: closestColor),
+            quaternary: generateDarkSecondaryColor(primaryColor: closestColor.color), // This is for use light theme primary color dark theme contrast color
             background: generateDarkBackgroundColor(primaryColor: closestColor.color),
             onPrimary: Color.white,
             onSecondary: Color.black,
