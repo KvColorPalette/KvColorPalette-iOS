@@ -22,7 +22,7 @@ This library simplifies the process of building consistent and visually appealin
 ```
 dependencies: [
     ....
-    .package(url: "https://github.com/KvColorPallet/KvColorPallet-iOS", from: "0.0.5"),
+    .package(url: "https://github.com/KvColorPallet/KvColorPallet-iOS", from: "0.0.6"),
 ]
 ```
 
