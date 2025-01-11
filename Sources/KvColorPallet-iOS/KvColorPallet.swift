@@ -32,6 +32,28 @@ public class KvColorPallet {
     }
     
     /**
+     * Generate a list of colors with pre-defined color packages. According to the feeding color,
+     * this method generate a list of colors.
+     *
+     * @param givenColor The color to generate the color packages for.
+     * @return A list of colors.
+     */
+    public func generateColorPallet(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
+        return [
+            Mat900Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat800Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat700Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat600Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            MatPackage().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat400Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat300Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat200Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat100Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat50Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color
+        ]
+    }
+    
+    /**
      * Generate a list of colors with alpha values. According to the feeding color,
      * this method generate a list of colors with different alpha values.
      *
@@ -100,26 +122,6 @@ public class KvColorPallet {
             Color(hue: hue, saturation: 0.3, brightness: brightness),
             Color(hue: hue, saturation: 0.2, brightness: brightness),
             Color(hue: hue, saturation: 0.1, brightness: brightness),
-        ]
-    }
-    
-    /**
-     * Generate a list of colors with pre-defined color packages. According to the feeding color,
-     * this method generate a list of colors.
-     *
-     * @param givenColor The color to generate the color packages for.
-     * @return A list of colors.
-     */
-    public func generateColorPallet(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
-        return [
-            Mat700Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat600Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            MatPackage().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat400Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat300Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat200Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat100Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat50Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color
         ]
     }
     

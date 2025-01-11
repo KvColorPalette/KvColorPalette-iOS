@@ -8,7 +8,7 @@ import Foundation
 import SwiftUICore
 
 public enum ColorPackageType {
-    case PK_0, PK_50, PK_100, PK_200, PK_300, PK_400, PK_500, PK_600, PK_700
+    case PK_0, PK_50, PK_100, PK_200, PK_300, PK_400, PK_500, PK_600, PK_700, PK_800, PK_900
 }
 
 /**
@@ -53,6 +53,90 @@ public class MatPackage: ColorPackageBase {
             matYellow,
             matGold,
             matOrange,
+        ]
+    }
+}
+
+/**
+ * Material colors 900
+ * This is for internal usage only.
+ */
+class Mat900Package: ColorPackageBase {
+    let MatRed = KvColor(colorName : "MatRed", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFFB71C1C))
+    let MatRose = KvColor(colorName : "MatRose", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF880E4F))
+    let MatLPurple = KvColor(colorName : "MatLPurple", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF4A148C))
+    let MatDPurple = KvColor(colorName : "MatDPurple", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF311B92))
+    let MatDBlue = KvColor(colorName : "MatDBlue", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF1A237E))
+    let MatLBlue = KvColor(colorName : "MatLBlue", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF0D47A1))
+    let MatLLBlue = KvColor(colorName : "MatLLBlue", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF01579B))
+    let MatLCyan = KvColor(colorName : "MatLCyan", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF006064))
+    let MatDCyan = KvColor(colorName : "MatDCyan", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF004D40))
+    let MatDGreen = KvColor(colorName : "MatDGreen", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF1B5E20))
+    let MatLGreen = KvColor(colorName : "MatLGreen", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF33691E))
+    let MatLLGreen = KvColor(colorName : "MatLLGreen", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFF827717))
+    let MatYellow = KvColor(colorName : "MatYellow", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFFF57F17))
+    let MatGold = KvColor(colorName : "MatGold", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFFFF6F00))
+    let MatOrange = KvColor(colorName : "MatOrange", colorPackage: ColorPackageType.PK_900, color : Color(hex: 0xFFE65100))
+
+    public override func getColorList() -> [KvColor] {
+        return [
+            MatRed,
+            MatRose,
+            MatLPurple,
+            MatDPurple,
+            MatDBlue,
+            MatLBlue,
+            MatLLBlue,
+            MatLCyan,
+            MatDCyan,
+            MatDGreen,
+            MatLGreen,
+            MatLLGreen,
+            MatYellow,
+            MatGold,
+            MatOrange,
+        ]
+    }
+}
+
+/**
+ * Material colors 800
+ * This is for internal usage only.
+ */
+class Mat800Package: ColorPackageBase {
+    let MatRed = KvColor(colorName : "MatRed", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFFC62828))
+    let MatRose = KvColor(colorName : "MatRose", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFFAD1457))
+    let MatLPurple = KvColor(colorName : "MatLPurple", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF6A1B9A))
+    let MatDPurple = KvColor(colorName : "MatDPurple", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF4527A0))
+    let MatDBlue = KvColor(colorName : "MatDBlue", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF283593))
+    let MatLBlue = KvColor(colorName : "MatLBlue", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF1565C0))
+    let MatLLBlue = KvColor(colorName : "MatLLBlue", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF0277BD))
+    let MatLCyan = KvColor(colorName : "MatLCyan", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF00838F))
+    let MatDCyan = KvColor(colorName : "MatDCyan", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF00695C))
+    let MatDGreen = KvColor(colorName : "MatDGreen", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF2E7D32))
+    let MatLGreen = KvColor(colorName : "MatLGreen", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF558B2F))
+    let MatLLGreen = KvColor(colorName : "MatLLGreen", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFF9E9D24))
+    let MatYellow = KvColor(colorName : "MatYellow", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFFF9A825))
+    let MatGold = KvColor(colorName : "MatGold", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFFFF8F00))
+    let MatOrange = KvColor(colorName : "MatOrange", colorPackage: ColorPackageType.PK_800, color : Color(hex: 0xFFEF6C00))
+
+    public override func getColorList() -> [KvColor] {
+        return [
+            MatRed,
+            MatRose,
+            MatLPurple,
+            MatDPurple,
+            MatDBlue,
+            MatLBlue,
+            MatLLBlue,
+            MatLCyan,
+            MatDCyan,
+            MatDGreen,
+            MatLGreen,
+            MatLLGreen,
+            MatYellow,
+            MatGold,
+            MatOrange,
         ]
     }
 }
