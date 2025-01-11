@@ -63,7 +63,6 @@ public class KvColorPallet {
     public func generateBrightnessColorPallet(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation
-        let brightness = givenColor.hsl.brightness
         
         return [
             Color(hue: hue, saturation: saturation, brightness: 1),
@@ -88,7 +87,6 @@ public class KvColorPallet {
      */
     public func generateSaturationColorPallet(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
-        let saturation = givenColor.hsl.saturation
         let brightness = givenColor.hsl.brightness
         
         return [
