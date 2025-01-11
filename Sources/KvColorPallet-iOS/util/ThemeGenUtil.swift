@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  kv-ios-color-pallet
+//  KvColorPallet-iOS
 //
 //  Created by Kavimal Wijewardana on 12/31/24.
 //
@@ -11,6 +11,12 @@ import UIKit
 
 public class ThemeGenUtil {
     
+    /**
+     * This method generate a color pallet for a theme from given (provided) color by the consumer.
+     *
+     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
+     * @return AppThemePallet
+     */
     internal static func generateThemeColorSet(givenColor: Color) -> AppThemePallet {
         let closestColor = ColorUtil.findClosestColor(givenColor: givenColor)
         
@@ -20,6 +26,14 @@ public class ThemeGenUtil {
         return AppThemePallet(light: lightColorSet, dark: darkColorSet)
     }
     
+    /**
+     * Generate light theme color pallet
+     *
+     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
+     * @closestColor: Closest color found in KvColorPallet-iOS library to the consumer givenColor
+     *
+     * @return ThemeColorPallet
+     */
     private static func generateLightThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
             base: givenColor,
@@ -33,6 +47,14 @@ public class ThemeGenUtil {
         )
     }
     
+    /**
+     * Generate dark theme color pallet
+     *
+     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
+     * @closestColor: Closest color found in KvColorPallet-iOS library to the consumer givenColor
+     *
+     * @return ThemeColorPallet
+     */
     private static func generateDarkThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
         return ThemeColorPallet(
             base: givenColor,

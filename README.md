@@ -22,7 +22,7 @@ This library simplifies the process of building consistent and visually appealin
 ```
 dependencies: [
     ....
-    .package(url: "https://github.com/KvColorPallet/KvColorPallet-iOS", from: "0.0.4"),
+    .package(url: "https://github.com/KvColorPallet/KvColorPallet-iOS", from: "0.0.5"),
 ]
 ```
 
@@ -45,11 +45,17 @@ After you integrated the `KvColorPallet-iOS` package, you can consume it as foll
 ### Basic Usage
 If you wants to consume basic features in `KvColorPallet` then use singleton instance as follows. This singleton instance allows consumers to access following basic functionalities.
 ```
+// Generate mat color schem of given color
+KvColorPallet.instance.generateColorPallet(givenColor: MatPackage().matGold)
+
 // Generate alpha color schem of given color
 KvColorPallet.instance.generateAlphaColorPallet(givenColor: MatPackage().matGold.color)
 
-// Generate mat color schem of given color
-KvColorPallet.instance.generateColorPallet(givenColor: MatPackage().matGold)
+// Generate brigtness (lightness) color schem of given color
+KvColorPallet.instance.generateBrightnessColorPallet(givenColor: MatPackage().matGold.color)
+
+// Generate saturation color schem of given color
+KvColorPallet.instance.generateSaturationColorPallet(givenColor: MatPackage().matGold.color)
 
 // Generate theme color pallet of given color
 KvColorPallet.instance.generateThemeColorPallet(givenColor: MatPackage().matGold)

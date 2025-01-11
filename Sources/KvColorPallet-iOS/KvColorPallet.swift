@@ -5,7 +5,7 @@ import UIKit
 import SwiftUICore
 
 /**
- * This is the kv-color-pallet android library.
+ * This is the KvColorPallet-iOS library.
  */
 public class KvColorPallet {
     
@@ -32,6 +32,28 @@ public class KvColorPallet {
     }
     
     /**
+     * Generate a list of colors with pre-defined color packages. According to the feeding color,
+     * this method generate a list of colors.
+     *
+     * @param givenColor The color to generate the color packages for.
+     * @return A list of colors.
+     */
+    public func generateColorPallet(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
+        return [
+            Mat900Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat800Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat700Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat600Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            MatPackage().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat400Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat300Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat200Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat100Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
+            Mat50Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color
+        ]
+    }
+    
+    /**
      * Generate a list of colors with alpha values. According to the feeding color,
      * this method generate a list of colors with different alpha values.
      *
@@ -54,22 +76,52 @@ public class KvColorPallet {
     }
     
     /**
-     * Generate a list of colors with pre-defined color packages. According to the feeding color,
-     * this method generate a list of colors.
+     * Generate a list of colors with brightness property change in given color. According to the feeding color,
+     * this method generate a list of colors with different brightnesses.
      *
-     * @param givenColor The color to generate the color packages for.
+     * @param givenColor The color to generate the brightness values for.
      * @return A list of colors.
      */
-    public func generateColorPallet(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
+    public func generateBrightnessColorPallet(givenColor: Color) -> [Color] {
+        let hue = givenColor.hsl.hue
+        let saturation = givenColor.hsl.saturation
+        
         return [
-            Mat700Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat600Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            MatPackage().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat400Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat300Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat200Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat100Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
-            Mat50Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color
+            Color(hue: hue, saturation: saturation, brightness: 1),
+            Color(hue: hue, saturation: saturation, brightness: 0.9),
+            Color(hue: hue, saturation: saturation, brightness: 0.8),
+            Color(hue: hue, saturation: saturation, brightness: 0.7),
+            Color(hue: hue, saturation: saturation, brightness: 0.6),
+            Color(hue: hue, saturation: saturation, brightness: 0.5),
+            Color(hue: hue, saturation: saturation, brightness: 0.4),
+            Color(hue: hue, saturation: saturation, brightness: 0.3),
+            Color(hue: hue, saturation: saturation, brightness: 0.2),
+            Color(hue: hue, saturation: saturation, brightness: 0.1),
+        ]
+    }
+    
+    /**
+     * Generate a list of colors with saturation property change in given color. According to the feeding color,
+     * this method generate a list of colors with different saturations.
+     *
+     * @param givenColor The color to generate the saturation values for.
+     * @return A list of colors.
+     */
+    public func generateSaturationColorPallet(givenColor: Color) -> [Color] {
+        let hue = givenColor.hsl.hue
+        let brightness = givenColor.hsl.brightness
+        
+        return [
+            Color(hue: hue, saturation: 1, brightness: brightness),
+            Color(hue: hue, saturation: 0.9, brightness: brightness),
+            Color(hue: hue, saturation: 0.8, brightness: brightness),
+            Color(hue: hue, saturation: 0.7, brightness: brightness),
+            Color(hue: hue, saturation: 0.6, brightness: brightness),
+            Color(hue: hue, saturation: 0.5, brightness: brightness),
+            Color(hue: hue, saturation: 0.4, brightness: brightness),
+            Color(hue: hue, saturation: 0.3, brightness: brightness),
+            Color(hue: hue, saturation: 0.2, brightness: brightness),
+            Color(hue: hue, saturation: 0.1, brightness: brightness),
         ]
     }
     
