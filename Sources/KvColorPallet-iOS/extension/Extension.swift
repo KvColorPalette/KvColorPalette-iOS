@@ -112,6 +112,13 @@ internal extension UIColor {
         }
     }
     
+    static var quaternaryColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPallet.appThemePallet else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.quaternary) : UIColor(appTheme.light.quaternary)
+        }
+    }
+    
     static var onPrimaryColor: UIColor {
         return UIColor { traitCollection in
             guard let appTheme = KvColorPallet.appThemePallet else { return .clear }

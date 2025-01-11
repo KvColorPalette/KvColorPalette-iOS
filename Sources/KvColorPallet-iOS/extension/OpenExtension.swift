@@ -21,6 +21,7 @@ public extension Color {
             primary: Color(UIColor.primaryColor),
             secondary: Color(UIColor.secondaryColor),
             tertiary: Color(UIColor.tertiaryColor),
+            quaternary: Color(UIColor.quaternaryColor),
             background: Color(UIColor.backgroundColor),
             onPrimary: Color(UIColor.onPrimaryColor),
             onSecondary: Color(UIColor.onSecondaryColor),
