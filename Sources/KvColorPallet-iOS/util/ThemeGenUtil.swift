@@ -17,11 +17,9 @@ public class ThemeGenUtil {
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
      * @return AppThemePallet
      */
-    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePallet {
-        let closestColor = ColorUtil.findClosestColor(givenColor: givenColor)
-        
-        let lightColorSet = generateLightThemeColorSet(givenColor: givenColor, closestColor: closestColor)
-        let darkColorSet = generateDarkThemeColorSet(givenColor: givenColor, closestColor: closestColor)
+    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePallet {        
+        let lightColorSet = generateLightThemeColorSet(givenColor: givenColor)
+        let darkColorSet = generateDarkThemeColorSet(givenColor: givenColor)
 
         return AppThemePallet(light: lightColorSet, dark: darkColorSet)
     }
@@ -30,18 +28,16 @@ public class ThemeGenUtil {
      * Generate light theme color pallet
      *
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @closestColor: Closest color found in KvColorPallet-iOS library to the consumer givenColor
-     *
      * @return ThemeColorPallet
      */
-    private static func generateLightThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
+    private static func generateLightThemeColorSet(givenColor: Color) -> ThemeColorPallet {
         return ThemeColorPallet(
             base: givenColor,
-            primary: closestColor.color,
-            secondary: generateLightSecondaryColor(primaryColor: closestColor.color),
-            tertiary: generateLightTeriaryColor(primaryColor: closestColor),
-            quaternary: closestColor.color, // This is for use light theme primary color dark theme contrast color
-            background: generateLightBackgroundColor(primaryColor: closestColor),
+            primary: givenColor,
+            secondary: generateLightSecondaryColor(primaryColor: givenColor),
+            tertiary: generateLightTeriaryColor(primaryColor: givenColor),
+            quaternary: givenColor, // This is for use light theme primary color dark theme contrast color
+            background: generateLightBackgroundColor(primaryColor: givenColor),
             onPrimary: Color.white,
             onSecondary: Color.white,
             shadow: Color.gray
@@ -52,18 +48,16 @@ public class ThemeGenUtil {
      * Generate dark theme color pallet
      *
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @closestColor: Closest color found in KvColorPallet-iOS library to the consumer givenColor
-     *
      * @return ThemeColorPallet
      */
-    private static func generateDarkThemeColorSet(givenColor: Color, closestColor: KvColor) -> ThemeColorPallet {
+    private static func generateDarkThemeColorSet(givenColor: Color) -> ThemeColorPallet {
         return ThemeColorPallet(
             base: givenColor,
-            primary: generateDarkPrimaryColor(primaryColor: closestColor.color),
-            secondary: generateDarkSecondaryColor(primaryColor: closestColor.color),
-            tertiary: generateDarkTeriaryColor(primaryColor: closestColor),
-            quaternary: generateDarkSecondaryColor(primaryColor: closestColor.color), // This is for use light theme primary color dark theme contrast color
-            background: generateDarkBackgroundColor(primaryColor: closestColor.color),
+            primary: generateDarkPrimaryColor(primaryColor: givenColor),
+            secondary: generateDarkSecondaryColor(primaryColor: givenColor),
+            tertiary: generateDarkTeriaryColor(primaryColor: givenColor),
+            quaternary: generateDarkSecondaryColor(primaryColor: givenColor), // This is for use light theme primary color dark theme contrast color
+            background: generateDarkBackgroundColor(primaryColor: givenColor),
             onPrimary: Color.white,
             onSecondary: Color.black,
             shadow: Color.white
@@ -76,12 +70,12 @@ public class ThemeGenUtil {
         )
     }
     
-    private static func generateLightTeriaryColor(primaryColor: KvColor) -> Color {
-        return primaryColor.changeColorPackage(colorPackage: ColorPackageType.PK_200).color
+    private static func generateLightTeriaryColor(primaryColor: Color) -> Color {
+        return Color(hue: primaryColor.hsl.hue, saturation: 0.5, brightness: 0.8)
     }
     
-    private static func generateLightBackgroundColor(primaryColor: KvColor) -> Color {
-        return primaryColor.changeColorPackage(colorPackage: ColorPackageType.PK_50).color
+    private static func generateLightBackgroundColor(primaryColor: Color) -> Color {
+        return Color(hue: primaryColor.hsl.hue, saturation: 0.05, brightness: 1)
     }
     
     private static func generateDarkPrimaryColor(primaryColor: Color) -> Color {
@@ -96,8 +90,8 @@ public class ThemeGenUtil {
         )
     }
     
-    private static func generateDarkTeriaryColor(primaryColor: KvColor) -> Color {
-        return primaryColor.changeColorPackage(colorPackage: ColorPackageType.PK_700).color
+    private static func generateDarkTeriaryColor(primaryColor: Color) -> Color {
+        return Color(hue: primaryColor.hsl.hue, saturation: 1, brightness: 0.5)
     }
     
     private static func generateDarkBackgroundColor(primaryColor: Color) -> Color {

@@ -26,9 +26,8 @@ public class KvColorPallet {
      * On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
      * `basicColor` is mandatory parameter while initiate the library.
      */
-    public static func initialize(basicColor: KvColor) {
-        let closestColor = ColorUtil.findClosestColor(givenColor: basicColor.color)
-        appThemePallet = instance.generateThemeColorPallet(givenColor: closestColor.color)
+    public static func initialize(basicColor: Color) {
+        appThemePallet = instance.generateThemeColorPallet(givenColor: basicColor)
     }
     
     /**
@@ -134,5 +133,15 @@ public class KvColorPallet {
      */
     public func generateThemeColorPallet(givenColor: Color) -> AppThemePallet {
         return ThemeGenUtil.generateThemeColorSet(givenColor: givenColor)
+    }
+    
+    /**
+     * This method finds the closest KvColor available in the KvColorPallet-iOS to the given color
+     *
+     * @param givenColor: The color to find closest KvColor from color packages
+     * @return KvColor
+     */
+    public func findClosestKvColor(givenColor: Color) -> KvColor {
+        return ColorUtil.findClosestColor(givenColor: givenColor)
     }
 }
