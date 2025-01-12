@@ -66,8 +66,8 @@ If you wants to use `KvColorPallet-iOS` to generate your theme color pallet when
 To initiate you have to pass one base color that you think your application will use. Use following code to initiate the library package.
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Initiate the KvColorPallet - (Assume your application's basic collor is MatPackage().matDGreen)
-    KvColorPallet.initialize(basicColor: MatPackage().matDGreen)
+    // Initiate the KvColorPallet - (Assume your application's basic collor is Color.blue)
+    KvColorPallet.initialize(basicColor: .blue)
     return true
 }
 ```
@@ -82,6 +82,7 @@ In this `Color.themePallet` you will have following color attributes.
 |.primary     |available   |available   |Suggesting primary color. This color can use for buttons, major component etc.   |
 |.secondary   |available   |available   |Suggesting secondary color. For any the secondary components which should not use by primary color.   |
 |.tertiary    |available   |available   |Suggesting tertiary color.   |
+|.quaternary  |available   |available   |Suggesting quaternary color.   |
 |.background  |available   |available   |Suggesting background color.   |
 |.onPrimary   |available   |available   |This is the color you can use on any component use primary color.   |
 |.onSecondary |available   |available   |This is the color you can use on any component use secondary color.   |
@@ -96,7 +97,7 @@ Therefore, make sure to initiate the library.
 We welcome contributions! Please fork the repository, make your changes, and submit a pull request. Ensure your code adheres to the established guidelines.
 
 # License
-kv-ios-color-pallet is licensed under the [MIT License](https://github.com/KvColorPallet/KvColorPallet-iOS/blob/main/LICENSE).
+`KvColorPallet-iOS` is licensed under the [MIT License](https://github.com/KvColorPallet/KvColorPallet-iOS/blob/main/LICENSE).
 
 # Feedback
 For questions, suggestions, or issues, please open an issue on GitHub or contact us at kavimalw@gmail.com.
