@@ -1,4 +1,4 @@
-# KV Color Pallet - iOS
+# KvColorPalette - iOS
 
 This is a lightweight iOS package library that generates a color palette from a given color and creates a theme color set for iOS applications. 
 This library simplifies the process of building consistent and visually appealing color themes.
