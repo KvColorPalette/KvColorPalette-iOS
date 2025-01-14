@@ -1,6 +1,6 @@
 //
 //  KvColorPackage.swift
-//  KvColorPallet-iOS
+//  KvColorPalette-iOS
 //
 //  Created by Kavimal Wijewardana on 12/27/24.
 //

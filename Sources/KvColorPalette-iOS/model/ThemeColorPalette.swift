@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  KvColorPallet-iOS
+//  KvColorPalette-iOS
 //
 //  Created by Kavimal Wijewardana on 12/31/24.
 //
@@ -9,15 +9,15 @@ import Foundation
 import SwiftUICore
 
 /**
- * This is a data object to hold two `ThemeColorPallet` object for light and dark theme generated from library.
+ * This is a data object to hold two `ThemeColorPalette` object for light and dark theme generated from library.
  *
- * @see ThemeColorPallet
+ * @see ThemeColorPalette
  */
-public struct AppThemePallet {
-    public let light: ThemeColorPallet
-    public let dark: ThemeColorPallet
+public struct AppThemePalette {
+    public let light: ThemeColorPalette
+    public let dark: ThemeColorPalette
     
-    public init(light: ThemeColorPallet, dark: ThemeColorPallet) {
+    public init(light: ThemeColorPalette, dark: ThemeColorPalette) {
         self.light = light
         self.dark = dark
     }
@@ -26,7 +26,7 @@ public struct AppThemePallet {
 /**
  * This is a data object that holds set of colors in a theme that use for different purposes in the application.
  */
-public struct ThemeColorPallet {
+public struct ThemeColorPalette {
     public let base: Color
     public let primary: Color
     public let secondary: Color

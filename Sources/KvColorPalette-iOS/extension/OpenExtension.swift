@@ -1,6 +1,6 @@
 //
 //  OpenExtension.swift
-//  KvColorPallet-iOS
+//  KvColorPalette-iOS
 //
 //  These extensions are available publicly in & out of the library.
 //
@@ -15,8 +15,8 @@ public extension Color {
     /**
      * Expose the theme-color pallet in `Color` object in SwiftUI.
      */
-    public static var themePallet: ThemeColorPallet {
-        return ThemeColorPallet(
+    public static var themePalette: ThemeColorPalette {
+        return ThemeColorPalette(
             base: Color(UIColor.baseColor),
             primary: Color(UIColor.primaryColor),
             secondary: Color(UIColor.secondaryColor),

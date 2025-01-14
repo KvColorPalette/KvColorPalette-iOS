@@ -5,29 +5,29 @@ import UIKit
 import SwiftUICore
 
 /**
- * This is the KvColorPallet-iOS library.
+ * This is the KvColorPalette-iOS library.
  */
-public class KvColorPallet {
+public class KvColorPalette {
     
-    nonisolated(unsafe) public static var instance: KvColorPallet = KvColorPallet()
-    nonisolated(unsafe) public static var appThemePallet: AppThemePallet? = nil
+    nonisolated(unsafe) public static var instance: KvColorPalette = KvColorPalette()
+    nonisolated(unsafe) public static var appThemePalette: AppThemePalette? = nil
     
     /**
-     * This is a basic initialization without a basic color.  When consumer use this initialization, in default KvColorPallet with not
-     * provide a theme color pallet. Consumer can generate their own by invoking `#generateThemeColorPallet(givenColor: KvColor)` method
+     * This is a basic initialization without a basic color.  When consumer use this initialization, in default KvColorPalette with not
+     * provide a theme color pallet. Consumer can generate their own by invoking `#generateThemeColorPalette(givenColor: KvColor)` method
      * in the package.
      */
     public init () {}
     
     /**
-     * KvColorPallet initialization. Consumer can use this to initialize the KvColorPallet from their application delegate if they need a
+     * KvColorPalette initialization. Consumer can use this to initialize the KvColorPalette from their application delegate if they need a
      * Theme color pallet at the application start-up.
      *
      * On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
      * `basicColor` is mandatory parameter while initiate the library.
      */
     public static func initialize(basicColor: Color) {
-        appThemePallet = instance.generateThemeColorPallet(givenColor: basicColor)
+        appThemePalette = instance.generateThemeColorPalette(givenColor: basicColor)
     }
     
     /**
@@ -37,7 +37,7 @@ public class KvColorPallet {
      * @param givenColor The color to generate the color packages for.
      * @return A list of colors.
      */
-    public func generateColorPallet(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
+    public func generateColorPalette(givenColor: KvColor, alphaChange: Double = 1) -> [Color] {
         return [
             Mat900Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
             Mat800Package().getColor(colorName: givenColor.colorName).alphaChange(modifyAlpha: alphaChange).color,
@@ -59,7 +59,7 @@ public class KvColorPallet {
      * @param givenColor The color to generate the alpha values for.
      * @return A list of colors with alpha values.
      */
-    public func generateAlphaColorPallet(givenColor: Color) -> [Color] {
+    public func generateAlphaColorPalette(givenColor: Color) -> [Color] {
         return [
             givenColor.opacity(1),
             givenColor.opacity(0.9),
@@ -81,7 +81,7 @@ public class KvColorPallet {
      * @param givenColor The color to generate the brightness values for.
      * @return A list of colors.
      */
-    public func generateBrightnessColorPallet(givenColor: Color) -> [Color] {
+    public func generateBrightnessColorPalette(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation
         
@@ -106,7 +106,7 @@ public class KvColorPallet {
      * @param givenColor The color to generate the saturation values for.
      * @return A list of colors.
      */
-    public func generateSaturationColorPallet(givenColor: Color) -> [Color] {
+    public func generateSaturationColorPalette(givenColor: Color) -> [Color] {
         let hue = givenColor.hsl.hue
         let brightness = givenColor.hsl.brightness
         
@@ -131,12 +131,12 @@ public class KvColorPallet {
      * @param givenColor The color to generate the theme color pallet for.
      * @return A theme color pallet.
      */
-    public func generateThemeColorPallet(givenColor: Color) -> AppThemePallet {
+    public func generateThemeColorPalette(givenColor: Color) -> AppThemePalette {
         return ThemeGenUtil.generateThemeColorSet(givenColor: givenColor)
     }
     
     /**
-     * This method finds the closest KvColor available in the KvColorPallet-iOS to the given color
+     * This method finds the closest KvColor available in the KvColorPalette-iOS to the given color
      *
      * @param givenColor: The color to find closest KvColor from color packages
      * @return KvColor
