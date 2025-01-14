@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  KvColorPallet-iOS
+//  KvColorPalette-iOS
 //
 //  Created by Kavimal Wijewardana on 12/31/24.
 //
@@ -15,23 +15,23 @@ public class ThemeGenUtil {
      * This method generate a color pallet for a theme from given (provided) color by the consumer.
      *
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return AppThemePallet
+     * @return AppThemePalette
      */
-    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePallet {        
+    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePalette {        
         let lightColorSet = generateLightThemeColorSet(givenColor: givenColor)
         let darkColorSet = generateDarkThemeColorSet(givenColor: givenColor)
 
-        return AppThemePallet(light: lightColorSet, dark: darkColorSet)
+        return AppThemePalette(light: lightColorSet, dark: darkColorSet)
     }
     
     /**
      * Generate light theme color pallet
      *
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return ThemeColorPallet
+     * @return ThemeColorPalette
      */
-    private static func generateLightThemeColorSet(givenColor: Color) -> ThemeColorPallet {
-        return ThemeColorPallet(
+    private static func generateLightThemeColorSet(givenColor: Color) -> ThemeColorPalette {
+        return ThemeColorPalette(
             base: givenColor,
             primary: givenColor,
             secondary: generateLightSecondaryColor(primaryColor: givenColor),
@@ -48,10 +48,10 @@ public class ThemeGenUtil {
      * Generate dark theme color pallet
      *
      * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return ThemeColorPallet
+     * @return ThemeColorPalette
      */
-    private static func generateDarkThemeColorSet(givenColor: Color) -> ThemeColorPallet {
-        return ThemeColorPallet(
+    private static func generateDarkThemeColorSet(givenColor: Color) -> ThemeColorPalette {
+        return ThemeColorPalette(
             base: givenColor,
             primary: generateDarkPrimaryColor(primaryColor: givenColor),
             secondary: generateDarkSecondaryColor(primaryColor: givenColor),
