@@ -14,7 +14,7 @@ This library simplifies the process of building consistent and visually appealin
 ### In your project:
 1. After open this project from XCode, then click on following `File -> Add Package Dependencies...`
 2. This will open up a window to search packages.
-3. On the search field, search with following URL `https://github.com/KvColorPallet/KvColorPallet-iOS`
+3. On the search field, search with following URL `https://github.com/KvColorPalette/KvColorPalette-iOS`
 
 ### In your Swift Package:
 1. Open your swift-package `Package` file.
@@ -22,7 +22,7 @@ This library simplifies the process of building consistent and visually appealin
 ```
 dependencies: [
     ....
-    .package(url: "https://github.com/KvColorPallet/KvColorPallet-iOS", from: "1.0.0"),
+    .package(url: "https://github.com/KvColorPalette/KvColorPalette-iOS", from: "1.0.0"),
 ]
 ```
 
@@ -33,49 +33,49 @@ targets: [
         name: "your-package-name"
         dependencies: [
             ....
-            .product(name: "KvColorPallet-iOS", package: "KvColorPallet-iOS"),
+            .product(name: "KvColorPalette-iOS", package: "KvColorPalette-iOS"),
         ]
     )
 ]
 ```
 
 # Usage
-After you integrated the `KvColorPallet-iOS` package, you can consume it as follows.
+After you integrated the `KvColorPalette-iOS` package, you can consume it as follows.
 
 ### Basic Usage
-If you wants to consume basic features in `KvColorPallet` then use singleton instance as follows. This singleton instance allows consumers to access following basic functionalities.
+If you wants to consume basic features in `KvColorPalette-iOS` then use singleton instance as follows. This singleton instance allows consumers to access following basic functionalities.
 ```
 // Generate mat color schem of given color
-KvColorPallet.instance.generateColorPallet(givenColor: MatPackage().matGold)
+KvColorPalette.instance.generateColorPalette(givenColor: MatPackage().matGold)
 
 // Generate alpha color schem of given color
-KvColorPallet.instance.generateAlphaColorPallet(givenColor: MatPackage().matGold.color)
+KvColorPalette.instance.generateAlphaColorPalette(givenColor: MatPackage().matGold.color)
 
 // Generate brigtness (lightness) color schem of given color
-KvColorPallet.instance.generateBrightnessColorPallet(givenColor: MatPackage().matGold.color)
+KvColorPalette.instance.generateBrightnessColorPalette(givenColor: MatPackage().matGold.color)
 
 // Generate saturation color schem of given color
-KvColorPallet.instance.generateSaturationColorPallet(givenColor: MatPackage().matGold.color)
+KvColorPalette.instance.generateSaturationColorPalette(givenColor: MatPackage().matGold.color)
 
 // Generate theme color pallet of given color
-KvColorPallet.instance.generateThemeColorPallet(givenColor: MatPackage().matGold)
+KvColorPalette.instance.generateThemeColorPalette(givenColor: MatPackage().matGold)
 ```
 
 ### Advance Usage
-If you wants to use `KvColorPallet-iOS` to generate your theme color pallet when your application start-up, then you have to initiate the library in AppDelegate level. 
+If you wants to use `KvColorPalette-iOS` to generate your theme color pallet when your application start-up, then you have to initiate the library in AppDelegate level. 
 To initiate you have to pass one base color that you think your application will use. Use following code to initiate the library package.
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Initiate the KvColorPallet - (Assume your application's basic collor is Color.blue)
-    KvColorPallet.initialize(basicColor: .blue)
+    // Initiate the KvColorPalette - (Assume your application's basic collor is Color.blue)
+    KvColorPalette.initialize(basicColor: .blue)
     return true
 }
 ```
 After initiate the swift package as above, you can access generate theme from anywhere in your application as extension in `Color` object in SwiftUI.
 ```
-Color.themePallet // This returns the generate theme color pallet.
+Color.themePalette // This returns the generate theme color pallet.
 ```
-In this `Color.themePallet` you will have following color attributes.
+In this `Color.themePalette` you will have following color attributes.
 |Attribute    |light-theme |dark-theme  |Description   |
 |-------------|------------|------------|--------------|
 |.base        |original    |original    |This is the base color given by the user.   |
@@ -89,7 +89,7 @@ In this `Color.themePallet` you will have following color attributes.
 |.shadow      |available   |available   |This is the color for your shadows.   |
 
 #### Note:
-To use above `Color.themePallet`, initialization of the library is mandatory item. Because even without initialization, you will see `Color.themePallet` attribute in your application, but all the colors it returns will be `.clear` color.
+To use above `Color.themePalette`, initialization of the library is mandatory item. Because even without initialization, you will see `Color.themePalette` attribute in your application, but all the colors it returns will be `.clear` color.
 Therefore, make sure to initiate the library.
 
 
@@ -97,7 +97,7 @@ Therefore, make sure to initiate the library.
 We welcome contributions! Please fork the repository, make your changes, and submit a pull request. Ensure your code adheres to the established guidelines.
 
 # License
-`KvColorPallet-iOS` is licensed under the [MIT License](https://github.com/KvColorPallet/KvColorPallet-iOS/blob/main/LICENSE).
+`KvColorPalette-iOS` is licensed under the [MIT License](https://github.com/KvColorPalette/KvColorPalette-iOS/blob/main/LICENSE).
 
 # Feedback
 For questions, suggestions, or issues, please open an issue on GitHub or contact us at kavimalw@gmail.com.
