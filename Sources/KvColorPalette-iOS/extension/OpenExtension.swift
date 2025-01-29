@@ -13,6 +13,38 @@ import SwiftUICore
 public extension Color {
     
     /**
+     * Seperate rgb (red, green, blue) colors of given color's components
+     */
+    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
+        typealias uiColor = UIColor
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var opasity: CGFloat = 0
+        
+        guard uiColor(self).getRed(&red, green: &green, blue: &blue, alpha: &opasity) else {
+            return (0,0,0,0)
+        }
+        
+        return (red, green, blue, opasity)
+    }
+    
+    /**
+     * Separate hsl (hue, saturation and brightness) of the given color.
+     */
+    var hsl: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
+        var hue: CGFloat  = 0.0
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+        
+        let uiColor = UIColor(self)
+        uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        
+        return (hue, saturation, brightness, alpha)
+    }
+    
+    /**
      * Expose the theme-color pallet in `Color` object in SwiftUI.
      */
     public static var themePalette: ThemeColorPalette {
