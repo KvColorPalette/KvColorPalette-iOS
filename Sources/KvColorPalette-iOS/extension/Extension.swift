@@ -26,6 +26,27 @@ internal extension Color {
     }
     
     /**
+     * Accept hex value to generate color
+     * @param hex [String] String value of hex [#ffffff or #000000]
+     * This is a nullable return
+     */
+    init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.hasPrefix("#") ? String(hexSanitized.dropFirst()) : hexSanitized
+
+        guard hexSanitized.count == 6 else { return nil }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexSanitized).scanHexInt64(&rgbValue)
+
+        let red = Double((rgbValue >> 16) & 0xFF) / 255.0
+        let green = Double((rgbValue >> 8) & 0xFF) / 255.0
+        let blue = Double(rgbValue & 0xFF) / 255.0
+
+        self.init(red: red, green: green, blue: blue)
+    }
+    
+    /**
      * Return hex value of the color
      */
     var hex: String {
