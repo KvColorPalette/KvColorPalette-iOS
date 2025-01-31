@@ -45,6 +45,17 @@ public extension Color {
     }
     
     /**
+     * Extension property to check if a [Color] is a high-light color.
+     */
+    var isHightLightColor: Bool {
+        return if hsl.brightness >= 0.7 {
+            true
+        } else {
+            false
+        }
+    }
+    
+    /**
      * Expose the theme-color pallet in `Color` object in SwiftUI.
      */
     public static var themePalette: ThemeColorPalette {
