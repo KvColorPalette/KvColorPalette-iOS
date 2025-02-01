@@ -26,35 +26,24 @@ internal extension Color {
     }
     
     /**
-     * Seperate rgb (red, green, blue) colors of given color's components
+     * Accept hex value to generate color
+     * @param hex [String] String value of hex [#ffffff or #000000]
+     * This is a nullable return
      */
-    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat, opacity: CGFloat) {
-        typealias uiColor = UIColor
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var opasity: CGFloat = 0
-        
-        guard uiColor(self).getRed(&red, green: &green, blue: &blue, alpha: &opasity) else {
-            return (0,0,0,0)
-        }
-        
-        return (red, green, blue, opasity)
-    }
-    
-    /**
-     * Separate hsl (hue, saturation and brightness) of the given color.
-     */
-    var hsl: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
-        var hue: CGFloat  = 0.0
-        var saturation: CGFloat = 0.0
-        var brightness: CGFloat = 0.0
-        var alpha: CGFloat = 0.0
-        
-        let uiColor = UIColor(self)
-        uiColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-        
-        return (hue, saturation, brightness, alpha)
+    init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.hasPrefix("#") ? String(hexSanitized.dropFirst()) : hexSanitized
+
+        guard hexSanitized.count == 6 else { return nil }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexSanitized).scanHexInt64(&rgbValue)
+
+        let red = Double((rgbValue >> 16) & 0xFF) / 255.0
+        let green = Double((rgbValue >> 8) & 0xFF) / 255.0
+        let blue = Double(rgbValue & 0xFF) / 255.0
+
+        self.init(red: red, green: green, blue: blue)
     }
     
     /**

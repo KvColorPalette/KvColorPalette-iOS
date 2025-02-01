@@ -10,13 +10,38 @@ import SwiftUICore
 public class ColorUtil {
     
     /**
+     * Validate if given color hex is valid
+     *
+     * @param colorHex hex color String
+     * @return [Boolean]
+     */
+    public static func validateColorHex(colorHex: String) -> Bool {
+        let colorHexRegex = "^#([A-Fa-f0-9]{6})$"
+        return colorHex.range(of: colorHexRegex, options: .regularExpression) != nil
+    }
+    
+    /**
      * Convert hex color to [Color]
      *
-     * @param color hex color String
+     * @param color hex color UInt
      * @return [Color]
      */
-    public static func getColorFromHex(colorHex: UInt) -> Color {
+    public static func getColorFromHexUInt(colorHex: UInt) -> Color {
         return Color(hex: colorHex)
+    }
+    
+    /**
+     * Convert hex color to [Color]
+     *
+     *@param color hex color String
+     *@return [Color] - Nullable
+     */
+    public static func getColorFromHexString(colorHex: String) -> Color? {
+        if validateColorHex(colorHex: colorHex) {
+            return Color(hex: colorHex)
+        } else {
+            return nil
+        }
     }
     
     /**
