@@ -29,20 +29,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install swiftenv
-        run: |
-          brew update
-          brew install swiftenv
-          echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> $HOME/.bash_profile
-          echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> $HOME/.bash_profile
-          echo 'eval "$(swiftenv init -)"' >> $HOME/.bash_profile
-          source $HOME/.bash_profile
-      
-      - name: Install Swift 6.0.0
-        run: |
-          swiftenv install 6.0.0
-          swiftenv global 6.0.0
-          swift --version
+      - name: Show Available Xcode Versions
+        run: ls /Applications | grep Xcode
           
       - name: Build Documentation
         run: xcodebuild docbuild -scheme KvColorPalette-iOS -destination 'platform=iOS' -derivedDataPath DerivedData
