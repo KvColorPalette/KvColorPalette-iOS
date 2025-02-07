@@ -25,19 +25,34 @@ jobs:
   # Build job
   build-docs:
     runs-on: macos-latest
-    strategy:
-      matrix:
-        xcode-version: ["16.0"] # Specify Xcode version that supports Swift 6.0.0
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      - name: Install swiftenv
+        run: |
+          brew update
+          brew install swiftenv
+          echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> $HOME/.bash_profile
+          echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> $HOME/.bash_profile
+          echo 'eval "$(swiftenv init -)"' >> $HOME/.bash_profile
+          source $HOME/.bash_profile
+      
+      - name: Install Swift 6.0.0
+        run: |
+          swiftenv install 6.0.0
+          swiftenv global 6.0.0
+          swift --version
+          
       - name: Build Documentation
         run: xcodebuild docbuild -scheme KvColorPalette-iOS -destination 'platform=iOS' -derivedDataPath DerivedData
+      
       - name: Process Documentation
         run: >
           xcrun docc process-archive 
           --archive DerivedData/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive 
           --output-path docs
+      
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
