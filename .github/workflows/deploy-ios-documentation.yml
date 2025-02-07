@@ -25,6 +25,9 @@ jobs:
   # Build job
   build-docs:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode-version: ["16.0"] # Specify Xcode version that supports Swift 6.0.0
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
