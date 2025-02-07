@@ -39,7 +39,7 @@ jobs:
         run: swift --version
           
       - name: Build Documentation
-        run: xcodebuild docbuild -scheme KvColorPalette-iOS -destination 'platform=iOS' -derivedDataPath DerivedData
+        run: xcodebuild docbuild -scheme KvColorPalette-iOS -derivedDataPath docc -destination 'generic/platform=iOS';
       
       - name: Process Documentation
         run: >
