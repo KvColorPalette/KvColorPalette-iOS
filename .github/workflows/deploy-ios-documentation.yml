@@ -1,0 +1,60 @@
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+name: Generate and deploy KvColorPalette-iOS documentation in GitHub Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build-docs:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Select Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.1.0.app/Contents/Developer
+          
+      - name: Build Documentation
+        run: xcodebuild docbuild -scheme KvColorPalette-iOS -derivedDataPath docc -destination 'generic/platform=iOS';
+      
+      - name: Process Documentation
+        run: >
+          xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --hosting-base-path KvColorPalette-iOS --output-path docs
+      
+      #- name: Deploy Documentation to GitHub Pages
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
+      #    publish_dir: ./docs
+
+      - name: Commit Generated Documentation
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "Update swift documentation v4" || echo "No changes to commit v4"
+
+      - name: Push Changes with SSH
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          git push git@github.com:KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
