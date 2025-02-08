@@ -47,6 +47,8 @@ jobs:
 
       - name: Commit and Push Documentation
         run: |
+          git config --global user.name "kavi707"
+          git config --global user.email "kavi707@gmail.com"
           git add docs/
-          git commit -m "Update swift documentation v1" || echo "No changes to commit v1"
+          git commit -m "Update swift documentation v2" || echo "No changes to commit v2"
           git push https://x-access-token:${{ secrets.GH_ACTION_DOC_GEN }}@github.com/KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
