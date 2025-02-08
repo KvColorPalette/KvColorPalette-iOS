@@ -37,7 +37,7 @@ jobs:
       
       - name: Process Documentation
         run: >
-          xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --output-path docs
+          xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --hosting-base-path KvColorPalette-iOS --output-path docs
       
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
