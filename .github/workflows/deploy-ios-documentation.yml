@@ -45,10 +45,16 @@ jobs:
       #    github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
       #    publish_dir: ./docs
 
-      - name: Commit and Push Documentation
+      #- name: Commit and Push Documentation
+      #  run: |
+      #    git config --global user.name "github-actions[bot]"
+      #    git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #    git add docs/
+      #    git commit -m "Update swift documentation v3" || echo "No changes to commit v3"
+      #    git push https://x-access-token:${{ secrets.GH_ACTION_DOC_GEN }}@github.com/KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
+
+      - name: Push Changes with SSH
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
-          git commit -m "Update swift documentation v3" || echo "No changes to commit v3"
-          git push https://x-access-token:${{ secrets.GH_ACTION_DOC_GEN }}@github.com/KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          git push git@github.com:KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
