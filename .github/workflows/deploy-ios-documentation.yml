@@ -42,5 +42,5 @@ jobs:
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_ACTION }}
+          github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
           publish_dir: ./docs
