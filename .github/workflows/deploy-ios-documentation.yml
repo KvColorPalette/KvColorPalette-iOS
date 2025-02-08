@@ -4,7 +4,8 @@ name: Generate and deploy KvColorPalette-iOS documentation in GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["feature/create-github-action-to-generate-documentation"]
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,21 +40,21 @@ jobs:
         run: >
           xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --hosting-base-path KvColorPalette-iOS --output-path docs
       
-      - name: Deploy Documentation to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
-          publish_dir: ./docs
+      #- name: Deploy Documentation to GitHub Pages
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
+      #    publish_dir: ./docs
 
-      #- name: Commit Generated Documentation
-      #  run: |
-      #    git config --global user.name "github-actions[bot]"
-      #    git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      #    git add docs/
-      #    git commit -m "Update swift documentation v4" || echo "No changes to commit v4"
+      - name: Commit Generated Documentation
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git commit -m "Update swift documentation v4" || echo "No changes to commit v4"
 
-      #- name: Push Changes with SSH
-      #  run: |
-      #    eval "$(ssh-agent -s)"
-      #    ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-      #    git push git@github.com:KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
+      - name: Push Changes with SSH
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          git push git@github.com:KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
