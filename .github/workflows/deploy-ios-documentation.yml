@@ -39,16 +39,14 @@ jobs:
         run: >
           xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --output-path docs
       
-      - name: Deploy Documentation to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
-          publish_dir: ./docs
+      #- name: Deploy Documentation to GitHub Pages
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    github_token: ${{ secrets.GH_ACTION_DOC_GEN }}
+      #    publish_dir: ./docs
 
-      #- name: Commit and Push Documentation
-      #  run: |
-      #    git config --global user.name "kavi707"
-      #    git config --global user.email "kavi707@gmail.com"
-      #    git add docs/
-      #    git commit -m "Update swift documentation [skip ci]" || echo "No changes to commit"
-      #    git push https://x-access-token:${{ secrets.GH_ACTION_DOC_GEN }}@github.com/KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
+      - name: Commit and Push Documentation
+        run: |
+          git add docs/
+          git commit -m "Update swift documentation v1" || echo "No changes to commit v1"
+          git push https://x-access-token:${{ secrets.GH_ACTION_DOC_GEN }}@github.com/KvColorPalette/KvColorPalette-iOS.git feature/create-github-action-to-generate-documentation
