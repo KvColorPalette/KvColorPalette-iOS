@@ -37,9 +37,10 @@ jobs:
         run: |
           xcodebuild docbuild -scheme KvColorPalette-iOS -derivedDataPath docc -destination 'generic/platform=iOS'
           ls -la
+          ls -la docc/Build/Products/Debug-iphoneos
       
       - name: Process Documentation
-        run: >
+        run: |
           xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --hosting-base-path KvColorPalette-iOS --output-path docs
           ls -la
       
