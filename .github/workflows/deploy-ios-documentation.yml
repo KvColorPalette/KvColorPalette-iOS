@@ -34,11 +34,14 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode_16.1.0.app/Contents/Developer
           
       - name: Build Documentation
-        run: xcodebuild docbuild -scheme KvColorPalette-iOS -derivedDataPath docc -destination 'generic/platform=iOS';
+        run: |
+          xcodebuild docbuild -scheme KvColorPalette-iOS -derivedDataPath docc -destination 'generic/platform=iOS'
+          ls -la
       
       - name: Process Documentation
         run: >
           xcrun docc process-archive transform-for-static-hosting docc/Build/Products/Debug-iphoneos/KvColorPalette-iOS.doccarchive --hosting-base-path KvColorPalette-iOS --output-path docs
+          ls -la
       
       - name: Deploy Documentation to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
