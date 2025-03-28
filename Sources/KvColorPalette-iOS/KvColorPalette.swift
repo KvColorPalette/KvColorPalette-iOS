@@ -57,9 +57,11 @@ public class KvColorPalette {
      * this method generate a list of colors with different alpha values.
      *
      * @param givenColor The color to generate the alpha values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors with alpha values.
      */
-    public func generateAlphaColorPalette(givenColor: Color) -> [Color] {
+    public func generateAlphaColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         return [
             givenColor.opacity(1),
             givenColor.opacity(0.9),
@@ -79,9 +81,11 @@ public class KvColorPalette {
      * this method generate a list of colors with different brightnesses.
      *
      * @param givenColor The color to generate the brightness values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors.
      */
-    public func generateBrightnessColorPalette(givenColor: Color) -> [Color] {
+    public func generateBrightnessColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation
         
@@ -104,9 +108,11 @@ public class KvColorPalette {
      * this method generate a list of colors with different saturations.
      *
      * @param givenColor The color to generate the saturation values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors.
      */
-    public func generateSaturationColorPalette(givenColor: Color) -> [Color] {
+    public func generateSaturationColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         let hue = givenColor.hsl.hue
         let brightness = givenColor.hsl.brightness
         
