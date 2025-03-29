@@ -62,18 +62,14 @@ public class KvColorPalette {
      * @return A list of colors with alpha values.
      */
     public func generateAlphaColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
-        return [
-            givenColor.opacity(1),
-            givenColor.opacity(0.9),
-            givenColor.opacity(0.8),
-            givenColor.opacity(0.7),
-            givenColor.opacity(0.6),
-            givenColor.opacity(0.5),
-            givenColor.opacity(0.4),
-            givenColor.opacity(0.3),
-            givenColor.opacity(0.2),
-            givenColor.opacity(0.1),
-        ]
+        var colorList: [Color] = []
+        
+        for i in stride(from: colorCount, to: 0, by: -1) {
+            let colorAlpha = 1.0/Double(colorCount)*Double(i)
+            colorList.append(givenColor.opacity(colorAlpha))
+        }
+        
+        return colorList
     }
     
     /**
