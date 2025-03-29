@@ -63,9 +63,10 @@ public class KvColorPalette {
      */
     public func generateAlphaColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         var colorList: [Color] = []
+        let reviceColorCount = ColorUtil.validateAndReviseColorCount(colorCount: colorCount)
         
-        for i in stride(from: colorCount, to: 0, by: -1) {
-            let colorAlpha = 1.0/Double(colorCount)*Double(i)
+        for i in stride(from: reviceColorCount, to: 0, by: -1) {
+            let colorAlpha = 1.0/Double(reviceColorCount)*Double(i)
             colorList.append(givenColor.opacity(colorAlpha))
         }
         
