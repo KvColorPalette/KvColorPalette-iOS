@@ -110,18 +110,15 @@ public class KvColorPalette {
         let hue = givenColor.hsl.hue
         let brightness = givenColor.hsl.brightness
         
-        return [
-            Color(hue: hue, saturation: 1, brightness: brightness),
-            Color(hue: hue, saturation: 0.9, brightness: brightness),
-            Color(hue: hue, saturation: 0.8, brightness: brightness),
-            Color(hue: hue, saturation: 0.7, brightness: brightness),
-            Color(hue: hue, saturation: 0.6, brightness: brightness),
-            Color(hue: hue, saturation: 0.5, brightness: brightness),
-            Color(hue: hue, saturation: 0.4, brightness: brightness),
-            Color(hue: hue, saturation: 0.3, brightness: brightness),
-            Color(hue: hue, saturation: 0.2, brightness: brightness),
-            Color(hue: hue, saturation: 0.1, brightness: brightness),
-        ]
+        var colorList: [Color] = []
+        let reviceColorCount = ColorUtil.validateAndReviseColorCount(colorCount: colorCount)
+        
+        for i in stride(from: reviceColorCount, to: 0, by: -1) {
+            let colorSaturation = 1.0/Double(reviceColorCount)*Double(i)
+            colorList.append(Color(hue: hue, saturation: colorSaturation, brightness: brightness))
+        }
+        
+        return colorList
     }
     
     /**
