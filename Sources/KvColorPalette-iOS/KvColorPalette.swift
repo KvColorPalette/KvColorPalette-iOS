@@ -57,21 +57,20 @@ public class KvColorPalette {
      * this method generate a list of colors with different alpha values.
      *
      * @param givenColor The color to generate the alpha values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors with alpha values.
      */
-    public func generateAlphaColorPalette(givenColor: Color) -> [Color] {
-        return [
-            givenColor.opacity(1),
-            givenColor.opacity(0.9),
-            givenColor.opacity(0.8),
-            givenColor.opacity(0.7),
-            givenColor.opacity(0.6),
-            givenColor.opacity(0.5),
-            givenColor.opacity(0.4),
-            givenColor.opacity(0.3),
-            givenColor.opacity(0.2),
-            givenColor.opacity(0.1),
-        ]
+    public func generateAlphaColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
+        var colorList: [Color] = []
+        let reviceColorCount = ColorUtil.validateAndReviseColorCount(colorCount: colorCount)
+        
+        for i in stride(from: reviceColorCount, to: 0, by: -1) {
+            let colorAlpha = 1.0/Double(reviceColorCount)*Double(i)
+            colorList.append(givenColor.opacity(colorAlpha))
+        }
+        
+        return colorList
     }
     
     /**
@@ -79,24 +78,23 @@ public class KvColorPalette {
      * this method generate a list of colors with different brightnesses.
      *
      * @param givenColor The color to generate the brightness values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors.
      */
-    public func generateBrightnessColorPalette(givenColor: Color) -> [Color] {
+    public func generateBrightnessColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         let hue = givenColor.hsl.hue
         let saturation = givenColor.hsl.saturation
         
-        return [
-            Color(hue: hue, saturation: saturation, brightness: 1),
-            Color(hue: hue, saturation: saturation, brightness: 0.9),
-            Color(hue: hue, saturation: saturation, brightness: 0.8),
-            Color(hue: hue, saturation: saturation, brightness: 0.7),
-            Color(hue: hue, saturation: saturation, brightness: 0.6),
-            Color(hue: hue, saturation: saturation, brightness: 0.5),
-            Color(hue: hue, saturation: saturation, brightness: 0.4),
-            Color(hue: hue, saturation: saturation, brightness: 0.3),
-            Color(hue: hue, saturation: saturation, brightness: 0.2),
-            Color(hue: hue, saturation: saturation, brightness: 0.1),
-        ]
+        var colorList: [Color] = []
+        let reviceColorCount = ColorUtil.validateAndReviseColorCount(colorCount: colorCount)
+        
+        for i in stride(from: reviceColorCount, to: 0, by: -1) {
+            let colorBrightness = 1.0/Double(reviceColorCount)*Double(i)
+            colorList.append(Color(hue: hue, saturation: saturation, brightness: colorBrightness))
+        }
+        
+        return colorList
     }
     
     /**
@@ -104,24 +102,23 @@ public class KvColorPalette {
      * this method generate a list of colors with different saturations.
      *
      * @param givenColor The color to generate the saturation values for.
+     * @param colorCount The number of colors to generate. In default that returns 10 colors. This accept integer value in a range of 2 - 30.
+     * Even someone passes number more than 30, this will returns only 30 colors.
      * @return A list of colors.
      */
-    public func generateSaturationColorPalette(givenColor: Color) -> [Color] {
+    public func generateSaturationColorPalette(givenColor: Color, colorCount: Int = 10) -> [Color] {
         let hue = givenColor.hsl.hue
         let brightness = givenColor.hsl.brightness
         
-        return [
-            Color(hue: hue, saturation: 1, brightness: brightness),
-            Color(hue: hue, saturation: 0.9, brightness: brightness),
-            Color(hue: hue, saturation: 0.8, brightness: brightness),
-            Color(hue: hue, saturation: 0.7, brightness: brightness),
-            Color(hue: hue, saturation: 0.6, brightness: brightness),
-            Color(hue: hue, saturation: 0.5, brightness: brightness),
-            Color(hue: hue, saturation: 0.4, brightness: brightness),
-            Color(hue: hue, saturation: 0.3, brightness: brightness),
-            Color(hue: hue, saturation: 0.2, brightness: brightness),
-            Color(hue: hue, saturation: 0.1, brightness: brightness),
-        ]
+        var colorList: [Color] = []
+        let reviceColorCount = ColorUtil.validateAndReviseColorCount(colorCount: colorCount)
+        
+        for i in stride(from: reviceColorCount, to: 0, by: -1) {
+            let colorSaturation = 1.0/Double(reviceColorCount)*Double(i)
+            colorList.append(Color(hue: hue, saturation: colorSaturation, brightness: brightness))
+        }
+        
+        return colorList
     }
     
     /**
