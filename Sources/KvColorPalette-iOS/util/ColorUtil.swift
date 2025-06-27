@@ -82,6 +82,24 @@ public class ColorUtil {
         return Float(sum)
     }
     
+    /// This method is to blend given two colors and return new color
+    ///
+    /// - Parameters:
+    ///   - firstColor: Given first color to blend.
+    ///   - secondColor: Given second color to blend.
+    ///   - bias: Bias to the new color for first / second color.
+    ///
+    /// - Returns: Returning a `Color` object of blended given two colors.
+    public static func blendColors(firstColor: Color, secondColor: Color, bias: Float = 0.5) -> Color {
+        let blendRed = colorBlendingComponent(firstColor: firstColor.rgb.red, secondColor: secondColor.rgb.red, bias: bias)
+        let blendGreen = colorBlendingComponent(firstColor: firstColor.rgb.green, secondColor: secondColor.rgb.green, bias: bias)
+        let blendBlue = colorBlendingComponent(firstColor: firstColor.rgb.blue, secondColor: secondColor.rgb.blue, bias: bias)
+        
+        let newColor = Color(red: CGFloat(blendRed), green: CGFloat(blendGreen), blue: CGFloat(blendBlue), opacity: 1)
+        
+        return Color(red: CGFloat(blendRed), green: CGFloat(blendGreen), blue: CGFloat(blendBlue), opacity: 1)
+    }
+    
     /**
      * Get closest color to the given color from available color packages.
      * This compares the available colors and find out the closest `KvColor` to the given color.
@@ -143,5 +161,26 @@ public class ColorUtil {
      */
     internal static func validateAndReviseColorCount(colorCount: Int) -> Int {
         return if colorCount >= 30 { 30 } else if colorCount <= 1 { 1 } else { colorCount }
+    }
+    
+    /// This method can return the color value of red/green/blue according to the blending bias with given first color's red/green/blue value and second color's red/green/blue value.
+    ///
+    /// - Parameters:
+    ///  - firstColor: The first color's red or green or blue component value
+    ///  - secondColor: The second color's red or green or blue component value
+    ///  - bias: The blending bias value
+    ///
+    /// - Returns: New blend color's red or green or blue color component value
+    private static func colorBlendingComponent(firstColor: CGFloat, secondColor: CGFloat, bias: Float) -> CGFloat {
+        let difference = abs(firstColor - secondColor)
+        let blending = difference * CGFloat(bias) // How bias to the blending colors, first or second
+        
+        if firstColor < secondColor {
+            return (firstColor) + blending // First color is in lower end, therefore adding bias
+        } else if firstColor > secondColor {
+            return (firstColor) - blending // First color is in higher end, therefore subtracting bias
+        } else {
+            return (firstColor) // This means, first component and second component are same. Therefore, returns same value.
+        }
     }
 }
