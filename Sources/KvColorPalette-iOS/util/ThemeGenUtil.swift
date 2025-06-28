@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ThemeGenUtil.swift
 //  KvColorPalette-iOS
 //
 //  Created by Kavimal Wijewardana on 12/31/24.
@@ -10,26 +10,28 @@ import SwiftUICore
 import UIKit
 
 public class ThemeGenUtil {
-    
-    /**
-     * This method generate a color pallet for a theme from given (provided) color by the consumer.
-     *
-     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return AppThemePalette
-     */
-    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePalette {        
+        
+    /// This method generate a color pallet for a theme from given (provided) color by the consumer.
+    ///
+    ///- Parameters:
+    /// - givenColor: Base color that need to generate a theme pallet. Theme will generate according to the properties of this color
+    ///
+    ///- Returns: `AppThemePalette`
+    ///
+    internal static func generateThemeColorSet(givenColor: Color) -> AppThemePalette {
         let lightColorSet = generateLightThemeColorSet(givenColor: givenColor)
         let darkColorSet = generateDarkThemeColorSet(givenColor: givenColor)
 
         return AppThemePalette(light: lightColorSet, dark: darkColorSet)
     }
-    
-    /**
-     * Generate light theme color pallet
-     *
-     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return ThemeColorPalette
-     */
+        
+    /// Generate light theme color pallet.
+    ///
+    /// - Parameters:
+    ///  - givenColor: Base color that need to generate a theme pallet. Theme will generate according to the properties of this color.
+    ///
+    /// - Returns: `ThemeColorPalette`
+    ///
     private static func generateLightThemeColorSet(givenColor: Color) -> ThemeColorPalette {
         return ThemeColorPalette(
             base: givenColor,
@@ -43,13 +45,14 @@ public class ThemeGenUtil {
             shadow: Color.gray
         )
     }
-    
-    /**
-     * Generate dark theme color pallet
-     *
-     * @param givenColor: base color that need to generate a theme pallet. Theme will generate according to the properties of this color
-     * @return ThemeColorPalette
-     */
+        
+    /// Generate dark theme color pallet
+    ///
+    /// - Parameters:
+    ///  - givenColor: Base color that need to generate a theme pallet. Theme will generate according to the properties of this color
+    ///
+    /// - Returns: `ThemeColorPalette`
+    ///
     private static func generateDarkThemeColorSet(givenColor: Color) -> ThemeColorPalette {
         return ThemeColorPalette(
             base: givenColor,
