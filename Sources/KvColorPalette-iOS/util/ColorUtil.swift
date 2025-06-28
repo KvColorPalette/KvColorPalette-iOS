@@ -9,33 +9,39 @@ import SwiftUICore
 
 public class ColorUtil {
     
-    /**
-     * Validate if given color hex is valid
-     *
-     * @param colorHex hex color String
-     * @return [Boolean]
-     */
+    ///
+    /// Validate if given color hex is valid
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex string value of a color
+    ///
+    /// - Returns: Boolean value for the given color hex is valid color or not.
+    ///
     public static func validateColorHex(colorHex: String) -> Bool {
         let colorHexRegex = "^#([A-Fa-f0-9]{6})$"
         return colorHex.range(of: colorHexRegex, options: .regularExpression) != nil
     }
     
-    /**
-     * Convert hex color to [Color]
-     *
-     * @param color hex color UInt
-     * @return [Color]
-     */
+    ///
+    /// Convert given hex to `Color`
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex int value of a color.
+    ///
+    /// - Returns: `Color` object for the given color Hex
+    ///
     public static func getColorFromHexUInt(colorHex: UInt) -> Color {
         return Color(hex: colorHex)
     }
     
-    /**
-     * Convert hex color to [Color]
-     *
-     *@param color hex color String
-     *@return [Color] - Nullable
-     */
+    ///
+    /// Convert given hex to `Color`
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex string value of a color.
+    ///
+    /// - Returns: `Color` object for the given color Hex. - Nullable
+    ///
     public static func getColorFromHexString(colorHex: String) -> Color? {
         if validateColorHex(colorHex: colorHex) {
             return Color(hex: colorHex)
@@ -44,33 +50,39 @@ public class ColorUtil {
         }
     }
     
-    /**
-     * Get hex value of given color
-     *
-     * @param color [Color]
-     * @return hex color String
-     */
+    ///
+    /// Get hex value of given color
+    ///
+    /// - Parameters:
+    ///  - color: Color for get the Hex
+    ///
+    /// - Returns: Hex string for given color
+    ///
     public static func getHex(color: Color) -> String {
         return color.hex
     }
     
-    /**
-     * Get hex value of given color with alpha
-     *
-     * @param color [Color]
-     * @return hex color String
-     */
+    ///
+    /// Get hex value of given color with alpha
+    ///
+    /// - Parameters:
+    ///  - color: Color for get the Hex with Alpha
+    ///
+    /// - Returns: Hex string for the given color
+    ///
     public static func getHexWithAlpha(color: Color) -> String {
         return color.hexWithAlpha
     }
     
-    /**
-     * Get distance between two colors
-     *
-     * @param colorOne [Color]
-     * @param colorTwo [Color]
-     * @return distance between two colors
-     */
+    ///
+    /// Get distance between two colors
+    ///
+    /// - Parameters:
+    ///  - colorOne: First color to check the distance.
+    ///  - colorTwo: Second color to check the distance with first color
+    ///
+    /// - Returns: Distance between given two colors.
+    ///
     public static func getColorDistace(colorOne: Color, colorTwo: Color) -> Float {
         let redDistance = abs(colorOne.rgb.red - colorTwo.rgb.red)
         let greenDistance = abs(colorOne.rgb.green - colorTwo.rgb.green)
@@ -82,13 +94,35 @@ public class ColorUtil {
         return Float(sum)
     }
     
-    /**
-     * Get closest color to the given color from available color packages.
-     * This compares the available colors and find out the closest `KvColor` to the given color.
-     *
-     * @param givenColor [Color]
-     * @return [KvColor] closest color to the given color
-     */
+    ///
+    /// This method is to blend given two colors and return new color
+    ///
+    /// - Parameters:
+    ///   - firstColor: Given first color to blend.
+    ///   - secondColor: Given second color to blend.
+    ///   - bias: Bias to the new color for first / second color.
+    ///
+    /// - Returns: Returning a `Color` object of blended given two colors.
+    ///
+    public static func blendColors(firstColor: Color, secondColor: Color, bias: Float = 0.5) -> Color {
+        let blendRed = colorBlendingComponent(firstColor: firstColor.rgb.red, secondColor: secondColor.rgb.red, bias: bias)
+        let blendGreen = colorBlendingComponent(firstColor: firstColor.rgb.green, secondColor: secondColor.rgb.green, bias: bias)
+        let blendBlue = colorBlendingComponent(firstColor: firstColor.rgb.blue, secondColor: secondColor.rgb.blue, bias: bias)
+        
+        let newColor = Color(red: CGFloat(blendRed), green: CGFloat(blendGreen), blue: CGFloat(blendBlue), opacity: 1)
+        
+        return Color(red: CGFloat(blendRed), green: CGFloat(blendGreen), blue: CGFloat(blendBlue), opacity: 1)
+    }
+    
+    ///
+    /// Get closest color to the given color from available color packages.
+    /// This compares the available colors and find out the closest `KvColor` to the given color.
+    ///
+    /// - Parameters:
+    ///  - givenColor: Provided color to get closest `KvColor`
+    ///
+    /// - Returns: Closest `KvColor` to the given color.
+    ///
     public static func findClosestColor(givenColor: Color) -> KvColor {
         // Do comparison with 700 color list
         let colorMatch700 = Mat700Package().compareColor(givenColor: givenColor)
@@ -134,14 +168,38 @@ public class ColorUtil {
         }
     }
     
-    /**
-     * Validate the color count requested by the user in the color palette.
-     * If the color count is greater than 30, then it will return 30. If the color count is less than 1, then it will return 1.
-     *
-     * @param colorCount [Int] The number of colors to generate.
-     * @return Int: The validated color count.
-     */
+    ///
+    /// Validate the color count requested by the user in the color palette.
+    ///
+    /// - Parameters:
+    ///  - colorCount: The number of colors to generate.
+    ///
+    /// - Returns:The validated color count.
+    ///
     internal static func validateAndReviseColorCount(colorCount: Int) -> Int {
         return if colorCount >= 30 { 30 } else if colorCount <= 1 { 1 } else { colorCount }
+    }
+    
+    ///
+    /// This method can return the color value of red/green/blue according to the blending bias with given first color's red/green/blue value and second color's red/green/blue value.
+    ///
+    /// - Parameters:
+    ///  - firstColor: The first color's red or green or blue component value
+    ///  - secondColor: The second color's red or green or blue component value
+    ///  - bias: The blending bias value
+    ///
+    /// - Returns: New blend color's red or green or blue color component value
+    /// 
+    private static func colorBlendingComponent(firstColor: CGFloat, secondColor: CGFloat, bias: Float) -> CGFloat {
+        let difference = abs(firstColor - secondColor)
+        let blending = difference * CGFloat(bias) // How bias to the blending colors, first or second
+        
+        if firstColor < secondColor {
+            return (firstColor) + blending // First color is in lower end, therefore adding bias
+        } else if firstColor > secondColor {
+            return (firstColor) - blending // First color is in higher end, therefore subtracting bias
+        } else {
+            return (firstColor) // This means, first component and second component are same. Therefore, returns same value.
+        }
     }
 }
