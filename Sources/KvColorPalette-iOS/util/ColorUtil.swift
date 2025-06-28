@@ -9,33 +9,33 @@ import SwiftUICore
 
 public class ColorUtil {
     
-    /**
-     * Validate if given color hex is valid
-     *
-     * @param colorHex hex color String
-     * @return [Boolean]
-     */
+    /// Validate if given color hex is valid
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex string value of a color
+    ///
+    /// - Returns: Boolean value for the given color hex is valid color or not.
     public static func validateColorHex(colorHex: String) -> Bool {
         let colorHexRegex = "^#([A-Fa-f0-9]{6})$"
         return colorHex.range(of: colorHexRegex, options: .regularExpression) != nil
     }
     
-    /**
-     * Convert hex color to [Color]
-     *
-     * @param color hex color UInt
-     * @return [Color]
-     */
+    /// Convert given hex to `Color`
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex int value of a color.
+    ///
+    /// - Returns: `Color` object for the given color Hex
     public static func getColorFromHexUInt(colorHex: UInt) -> Color {
         return Color(hex: colorHex)
     }
     
-    /**
-     * Convert hex color to [Color]
-     *
-     *@param color hex color String
-     *@return [Color] - Nullable
-     */
+    /// Convert given hex to `Color`
+    ///
+    /// - Parameters:
+    ///  - colorHex: Hex string value of a color.
+    ///
+    /// - Returns: `Color` object for the given color Hex. - Nullable
     public static func getColorFromHexString(colorHex: String) -> Color? {
         if validateColorHex(colorHex: colorHex) {
             return Color(hex: colorHex)
@@ -44,33 +44,33 @@ public class ColorUtil {
         }
     }
     
-    /**
-     * Get hex value of given color
-     *
-     * @param color [Color]
-     * @return hex color String
-     */
+    /// Get hex value of given color
+    ///
+    /// - Parameters:
+    ///  - color: Color for get the Hex
+    ///
+    /// - Returns: Hex string for given color
     public static func getHex(color: Color) -> String {
         return color.hex
     }
     
-    /**
-     * Get hex value of given color with alpha
-     *
-     * @param color [Color]
-     * @return hex color String
-     */
+    /// Get hex value of given color with alpha
+    ///
+    /// - Parameters:
+    ///  - color: Color for get the Hex with Alpha
+    ///
+    /// - Returns: Hex string for the given color
     public static func getHexWithAlpha(color: Color) -> String {
         return color.hexWithAlpha
     }
     
-    /**
-     * Get distance between two colors
-     *
-     * @param colorOne [Color]
-     * @param colorTwo [Color]
-     * @return distance between two colors
-     */
+    /// Get distance between two colors
+    ///
+    /// - Parameters:
+    ///  - colorOne: First color to check the distance.
+    ///  - colorTwo: Second color to check the distance with first color
+    ///
+    /// - Returns: Distance between given two colors.
     public static func getColorDistace(colorOne: Color, colorTwo: Color) -> Float {
         let redDistance = abs(colorOne.rgb.red - colorTwo.rgb.red)
         let greenDistance = abs(colorOne.rgb.green - colorTwo.rgb.green)
@@ -100,13 +100,13 @@ public class ColorUtil {
         return Color(red: CGFloat(blendRed), green: CGFloat(blendGreen), blue: CGFloat(blendBlue), opacity: 1)
     }
     
-    /**
-     * Get closest color to the given color from available color packages.
-     * This compares the available colors and find out the closest `KvColor` to the given color.
-     *
-     * @param givenColor [Color]
-     * @return [KvColor] closest color to the given color
-     */
+    /// Get closest color to the given color from available color packages.
+    /// This compares the available colors and find out the closest `KvColor` to the given color.
+    ///
+    /// - Parameters:
+    ///  - givenColor: Provided color to get closest `KvColor`
+    ///
+    /// - Returns: Closest `KvColor` to the given color.
     public static func findClosestColor(givenColor: Color) -> KvColor {
         // Do comparison with 700 color list
         let colorMatch700 = Mat700Package().compareColor(givenColor: givenColor)
@@ -152,13 +152,12 @@ public class ColorUtil {
         }
     }
     
-    /**
-     * Validate the color count requested by the user in the color palette.
-     * If the color count is greater than 30, then it will return 30. If the color count is less than 1, then it will return 1.
-     *
-     * @param colorCount [Int] The number of colors to generate.
-     * @return Int: The validated color count.
-     */
+    /// Validate the color count requested by the user in the color palette.
+    ///
+    /// - Parameters:
+    ///  - colorCount: The number of colors to generate.
+    ///
+    /// - Returns:The validated color count.
     internal static func validateAndReviseColorCount(colorCount: Int) -> Int {
         return if colorCount >= 30 { 30 } else if colorCount <= 1 { 1 } else { colorCount }
     }
