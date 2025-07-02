@@ -9,6 +9,13 @@ This library simplifies the process of building consistent and visually appealin
 * Support for Material Design color guidelines.
 * Easy integration with Android projects.
 
+# Reference App
+To show case all features and functionalities of this library, there is a reference app we build. Application is already available in Apple AppStore. Reference app code is available in GitHub.
+|Title                  |Link                                                               |
+|-----------------------|-------------------------------------------------------------------|
+|Apple AppStore         |https://apps.apple.com/us/app/kvcolorpalette/id6745904568          |
+|GitHub Code Reference  |https://github.com/KvColorPalette/KvColorPalette-iOS-App           |
+
 # Installation
 
 ### In your project:
