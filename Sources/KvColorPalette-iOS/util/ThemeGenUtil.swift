@@ -24,6 +24,25 @@ public class ThemeGenUtil {
 
         return AppThemePalette(light: lightColorSet, dark: darkColorSet)
     }
+    
+    internal static func generateMultiColorInputThemeColorScheme(givenColor: Color, secondColor: Color,
+                                                                 bias: Float = 0.5, themeGenMode: ThemeGenMode) -> AppThemePalette {
+        var blendColor: Color? = nil
+        
+        switch(themeGenMode) {
+        case .SEQUENCE:
+            blendColor = nil
+            break
+        case .BLEND:
+            blendColor = ColorUtil.blendColors(firstColor: givenColor, secondColor: secondColor, bias: bias)
+            break
+        }
+        
+        let lightColorSet = generateMultiInputLightThemeColorSet(givenColor: givenColor, secondColor: secondColor, blendColor: blendColor, themeGenMode: themeGenMode)
+        let darkColorSet = generateMultiInputDarkThemeColorSet(givenColor: givenColor, secondColor: secondColor, blendColor: blendColor, themeGenMode: themeGenMode)
+        
+        return AppThemePalette(light: lightColorSet, dark: darkColorSet)
+    }
         
     /// Generate light theme color pallet.
     ///
@@ -45,6 +64,43 @@ public class ThemeGenUtil {
             shadow: Color.gray
         )
     }
+    
+    private static func generateMultiInputLightThemeColorSet(givenColor: Color, secondColor: Color, blendColor: Color?,
+                                                             bias: Float = 0.5, themeGenMode: ThemeGenMode) -> ThemeColorPalette {
+        switch(themeGenMode) {
+        case .SEQUENCE:
+            return ThemeColorPalette(
+                base: givenColor,
+                primary: givenColor,
+                secondary: secondColor,
+                tertiary: generateLightTeriaryColor(primaryColor: givenColor),
+                quaternary: givenColor,
+                background: generateLightBackgroundColor(primaryColor: givenColor),
+                onPrimary: Color.white,
+                onSecondary: Color.white,
+                shadow: Color.gray
+            )
+            break
+        case .BLEND:
+            var themingColor: Color = givenColor
+            if blendColor != nil {
+                themingColor = blendColor!
+            }
+            
+            return ThemeColorPalette(
+                base: themingColor,
+                primary: givenColor,
+                secondary: secondColor,
+                tertiary: generateLightTeriaryColor(primaryColor: themingColor),
+                quaternary: givenColor,
+                background: generateLightBackgroundColor(primaryColor: themingColor),
+                onPrimary: Color.white,
+                onSecondary: Color.white,
+                shadow: Color.gray
+            )
+            break
+        }
+    }
         
     /// Generate dark theme color pallet
     ///
@@ -65,6 +121,43 @@ public class ThemeGenUtil {
             onSecondary: Color.black,
             shadow: Color.white
         )
+    }
+    
+    private static func generateMultiInputDarkThemeColorSet(givenColor: Color, secondColor: Color, blendColor: Color?,
+                                                             bias: Float = 0.5, themeGenMode: ThemeGenMode) -> ThemeColorPalette {
+        switch(themeGenMode) {
+        case .SEQUENCE:
+            return ThemeColorPalette(
+                base: givenColor,
+                primary: generateDarkSecondaryColor(primaryColor: givenColor),
+                secondary: generateDarkSecondaryColor(primaryColor: secondColor),
+                tertiary: generateDarkTeriaryColor(primaryColor: givenColor),
+                quaternary: generateDarkSecondaryColor(primaryColor: givenColor),
+                background: generateDarkBackgroundColor(primaryColor: givenColor),
+                onPrimary: Color.white,
+                onSecondary: Color.white,
+                shadow: Color.gray
+            )
+            break
+        case .BLEND:
+            var themingColor: Color = givenColor
+            if blendColor != nil {
+                themingColor = blendColor!
+            }
+            
+            return ThemeColorPalette(
+                base: themingColor,
+                primary: generateDarkSecondaryColor(primaryColor: givenColor),
+                secondary: generateDarkSecondaryColor(primaryColor: secondColor),
+                tertiary: generateDarkTeriaryColor(primaryColor: themingColor),
+                quaternary: generateDarkSecondaryColor(primaryColor: themingColor),
+                background: generateDarkBackgroundColor(primaryColor: themingColor),
+                onPrimary: Color.white,
+                onSecondary: Color.black,
+                shadow: Color.white
+            )
+            break
+        }
     }
     
     private static func generateLightSecondaryColor(primaryColor: Color) -> Color {

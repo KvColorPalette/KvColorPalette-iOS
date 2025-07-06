@@ -142,6 +142,15 @@ public class KvColorPalette {
     }
     
     ///
+    /// Generate a theme color palette. According to the feeding color, this method generate a color scheme theme color palette.
+    ///
+    /// 
+    public func generateMultiColorThemeColorSchemePalette(givenColor: Color, secondColor: Color,
+                                                          bias: Float = 0.5, themeGenMode: ThemeGenMode = ThemeGenMode.SEQUENCE) -> AppThemePalette {
+        return ThemeGenUtil.generateMultiColorInputThemeColorScheme(givenColor: givenColor, secondColor: secondColor, bias: bias, themeGenMode: themeGenMode)
+    }
+    
+    ///
     /// This method finds the closest KvColor available in the `KvColorPalette-iOS` to the given color
     ///
     /// - Parameters:
