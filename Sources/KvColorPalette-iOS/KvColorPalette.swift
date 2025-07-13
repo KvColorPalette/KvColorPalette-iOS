@@ -31,6 +31,12 @@ public class KvColorPalette {
     public static func initialize(basicColor: Color) {
         appThemePalette = instance.generateThemeColorPalette(givenColor: basicColor)
     }
+    
+    ///
+    /// 
+    public static func initialize(baseColor: Color, secondColor: Color, themeGenMode: ThemeGenMode = ThemeGenMode.SEQUENCE, bias: Float = 0.5) {
+        appThemePalette = instance.generateMultiColorThemeColorSchemePalette(givenColor: baseColor, secondColor: secondColor, themeGenMode: themeGenMode, bias: bias)
+    }
         
     ///
     /// Generate a list of colors with pre-defined color packages. According to the feeding color,
@@ -146,7 +152,7 @@ public class KvColorPalette {
     ///
     /// 
     public func generateMultiColorThemeColorSchemePalette(givenColor: Color, secondColor: Color,
-                                                          bias: Float = 0.5, themeGenMode: ThemeGenMode = ThemeGenMode.SEQUENCE) -> AppThemePalette {
+                                                          themeGenMode: ThemeGenMode = ThemeGenMode.SEQUENCE, bias: Float = 0.5) -> AppThemePalette {
         return ThemeGenUtil.generateMultiColorInputThemeColorScheme(givenColor: givenColor, secondColor: secondColor, bias: bias, themeGenMode: themeGenMode)
     }
     
