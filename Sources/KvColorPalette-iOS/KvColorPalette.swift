@@ -28,12 +28,27 @@ public class KvColorPalette {
     /// On this initiation of kv-color-pallet, we generate a theme color pallet using the given color.
     /// `basicColor` is mandatory parameter while initiate the library.
     ///
+    /// - Parameters:
+    ///  - basicColor: Color: Given color for generate theme palette.
+    ///
     public static func initialize(basicColor: Color) {
         appThemePalette = instance.generateThemeColorPalette(givenColor: basicColor)
     }
     
     ///
-    /// 
+    /// KvColorPalette initialization. Consumer can use this to initialize the KvColorPalette from their application, if they need a Theme color palette at the application start-up.
+    ///
+    /// On this initiation of KvColorPalette, library generate a theme color palette using the given base color and second color.
+    /// `baseColor` and `secondColor` are mandatory parameter while initiate the library. Other two parameters are optional.
+    ///
+    /// - Parameters:
+    ///   - baseColor: Color: Given first for generate theme palette.
+    ///   - secondColor: Color: Given second color for generate theme palette.
+    ///   - bias: Float: The bias value to blend the two colors. In default that is 0.5f. This accept float value in a range of 0.0 - 1.0.
+    ///   - themeGenMode: ThemeGenPattern: The pattern to generate the theme color palette. Default is [ThemeGenMode.SEQUENCE] and available options are [ThemeGenMode.SEQUENCE] and [ThemeGenMode.BLEND]
+    ///    - [ThemeGenMode.SEQUENCE] will add base color & primary & second color as secondary, rest of the colors will generate by using given base color.
+    ///    - [ThemeGenMode.BLEND] will add base color & primary & second color as primary, rest of the colors will generate by after generating new color blend first and second colors.
+    ///
     public static func initialize(baseColor: Color, secondColor: Color, themeGenMode: ThemeGenMode = ThemeGenMode.SEQUENCE, bias: Float = 0.5) {
         appThemePalette = instance.generateMultiColorThemeColorSchemePalette(givenColor: baseColor, secondColor: secondColor, themeGenMode: themeGenMode, bias: bias)
     }
