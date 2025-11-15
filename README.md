@@ -29,7 +29,7 @@ To show case all features and functionalities of this library, there is a refere
 ```
 dependencies: [
     ....
-    .package(url: "https://github.com/KvColorPalette/KvColorPalette-iOS", from: "2.0.0"),
+    .package(url: "https://github.com/KvColorPalette/KvColorPalette-iOS", from: "2.0.1"),
 ]
 ```
 
