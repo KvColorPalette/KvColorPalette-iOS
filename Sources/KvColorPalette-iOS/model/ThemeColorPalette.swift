@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 /**
  * This is a data object to hold two `ThemeColorPalette` object for light and dark theme generated from library.

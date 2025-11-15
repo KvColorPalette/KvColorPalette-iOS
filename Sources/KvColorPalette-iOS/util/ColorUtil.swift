@@ -5,7 +5,7 @@
 //  Created by Kavimal Wijewardana on 12/27/24.
 //
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 public class ColorUtil {
     

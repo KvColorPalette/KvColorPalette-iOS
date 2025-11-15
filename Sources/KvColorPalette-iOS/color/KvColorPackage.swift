@@ -5,7 +5,7 @@
 //  Created by Kavimal Wijewardana on 12/27/24.
 //
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 public enum ColorPackageType {
     case PK_0, PK_50, PK_100, PK_200, PK_300, PK_400, PK_500, PK_600, PK_700, PK_800, PK_900

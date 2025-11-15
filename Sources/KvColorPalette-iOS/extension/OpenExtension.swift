@@ -8,7 +8,7 @@
 //
 import Foundation
 import UIKit
-import SwiftUICore
+import SwiftUI
 
 public extension Color {
     

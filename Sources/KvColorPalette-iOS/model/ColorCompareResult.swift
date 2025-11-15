@@ -5,7 +5,7 @@
 //  Created by Kavimal Wijewardana on 12/27/24.
 //
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 /**
 * Result of the color comparison functionality in kv-color-pallet library.

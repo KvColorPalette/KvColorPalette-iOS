@@ -2,7 +2,7 @@
 // https://docs.swift.org/swift-book
 import Foundation
 import UIKit
-import SwiftUICore
+import SwiftUI
 
 
 ///

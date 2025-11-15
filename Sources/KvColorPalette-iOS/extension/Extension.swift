@@ -6,7 +6,7 @@
 //
 //  Created by Kavimal Wijewardana on 12/27/24.
 //
-import SwiftUICore
+import SwiftUI
 import UIKit
 
 internal extension Color {
