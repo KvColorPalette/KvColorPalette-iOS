@@ -100,8 +100,8 @@ In this `Color.themePalette` you will have following color attributes.
 |.inverseOnPrimary      |available   |available   |This is the inverse color of onPrimary color.   |
 |.onSecondary           |available   |available   |This is the color you can use on any component use secondary color.   |
 |.onBackground          |available   |available   |This is the color you can use on any component use background color.   |
-|.onBackground          |available   |available   |This is the color you can use on any component use background color.   |
 |.inverseOnBackground   |available   |available   |This is the inverse color of onBackground color.   |
+|.onSurface             |available   |available   |This is the color you can use on any component use background color.   |
 
 #### Note:
 To use above `Color.themePalette`, initialization of the library is mandatory item. Because even without initialization, you will see `Color.themePalette` attribute in your application, but all the colors it returns will be `.clear` color.
