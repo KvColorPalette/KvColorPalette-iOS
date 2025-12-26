@@ -35,14 +35,22 @@ public class ThemeGenUtil {
     private static func generateLightThemeColorSet(givenColor: Color) -> ThemeColorPalette {
         return ThemeColorPalette(
             base: givenColor,
+            defaultColor: Color.white,
+            inverseDefaultColor: Color.black,
             primary: givenColor,
             secondary: generateLightSecondaryColor(primaryColor: givenColor),
             tertiary: generateLightTeriaryColor(primaryColor: givenColor),
             quaternary: givenColor, // This is for use light theme primary color dark theme contrast color
             background: generateLightBackgroundColor(primaryColor: givenColor),
+            surface: generateLightSurfaceColor(primaryColor: givenColor),
+            scrim: Color.black,
+            shadow: Color.gray,
             onPrimary: Color.white,
+            inverseOnPrimary: Color.black,
             onSecondary: Color.white,
-            shadow: Color.gray
+            onBackground: Color.black,
+            inverseOnBackground: Color.white,
+            onSurface: Color.black
         )
     }
         
@@ -56,14 +64,22 @@ public class ThemeGenUtil {
     private static func generateDarkThemeColorSet(givenColor: Color) -> ThemeColorPalette {
         return ThemeColorPalette(
             base: givenColor,
+            defaultColor: Color.black,
+            inverseDefaultColor: Color.white,
             primary: generateDarkPrimaryColor(primaryColor: givenColor),
             secondary: generateDarkSecondaryColor(primaryColor: givenColor),
             tertiary: generateDarkTeriaryColor(primaryColor: givenColor),
             quaternary: generateDarkSecondaryColor(primaryColor: givenColor), // This is for use light theme primary color dark theme contrast color
             background: generateDarkBackgroundColor(primaryColor: givenColor),
+            surface: generateDarkSurfaceColor(primaryColor: givenColor),
+            scrim: Color.white,
+            shadow: Color.white,
             onPrimary: Color.white,
-            onSecondary: Color.black,
-            shadow: Color.white
+            inverseOnPrimary: Color.black,
+            onSecondary: Color.white,
+            onBackground: Color.white,
+            inverseOnBackground: Color.black,
+            onSurface: Color.white
         )
     }
     
@@ -79,6 +95,10 @@ public class ThemeGenUtil {
     
     private static func generateLightBackgroundColor(primaryColor: Color) -> Color {
         return Color(hue: primaryColor.hsl.hue, saturation: 0.05, brightness: 1)
+    }
+    
+    private static func generateLightSurfaceColor(primaryColor: Color) -> Color {
+        return Color(hue: primaryColor.hsl.hue, saturation: 0.02, brightness: 1)
     }
     
     private static func generateDarkPrimaryColor(primaryColor: Color) -> Color {
@@ -100,6 +120,12 @@ public class ThemeGenUtil {
     private static func generateDarkBackgroundColor(primaryColor: Color) -> Color {
         return Color(
             UIColor(red: primaryColor.rgb.red*0.1, green: primaryColor.rgb.green*0.1, blue: primaryColor.rgb.blue*0.1, alpha: 1)
+        )
+    }
+    
+    private static func generateDarkSurfaceColor(primaryColor: Color) -> Color {
+        return Color(
+            UIColor(red: primaryColor.rgb.red*0.05, green: primaryColor.rgb.green*0.05, blue: primaryColor.rgb.blue*0.05, alpha: 1)
         )
     }
 }

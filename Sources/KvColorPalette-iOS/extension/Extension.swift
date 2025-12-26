@@ -80,6 +80,20 @@ internal extension UIColor {
         }
     }
     
+    static var defaultColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.defaultColor) : UIColor(appTheme.light.defaultColor)
+        }
+    }
+    
+    static var inverseDefaultColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.inverseDefaultColor) : UIColor(appTheme.light.inverseDefaultColor)
+        }
+    }
+    
     static var primaryColor: UIColor {
         return UIColor { traitCollection in
             guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
@@ -108,17 +122,24 @@ internal extension UIColor {
         }
     }
     
-    static var onPrimaryColor: UIColor {
+    static var backgroundColor: UIColor {
         return UIColor { traitCollection in
             guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onPrimary) : UIColor(appTheme.light.onPrimary)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.background) : UIColor(appTheme.light.background)
         }
     }
     
-    static var onSecondaryColor: UIColor {
+    static var surfaceColor: UIColor {
         return UIColor { traitCollection in
             guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onSecondary) : UIColor(appTheme.light.onSecondary)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.surface) : UIColor(appTheme.light.surface)
+        }
+    }
+    
+    static var scrimColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.scrim) : UIColor(appTheme.light.scrim)
         }
     }
     
@@ -129,10 +150,45 @@ internal extension UIColor {
         }
     }
     
-    static var backgroundColor: UIColor {
+    static var onPrimaryColor: UIColor {
         return UIColor { traitCollection in
             guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
-            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.background) : UIColor(appTheme.light.background)
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onPrimary) : UIColor(appTheme.light.onPrimary)
+        }
+    }
+    
+    static var inverseOnPrimaryColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.inverseOnPrimary) : UIColor(appTheme.light.inverseOnPrimary)
+        }
+    }
+    
+    static var onSecondaryColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onSecondary) : UIColor(appTheme.light.onSecondary)
+        }
+    }
+    
+    static var onBackgroundColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onBackground) : UIColor(appTheme.light.onBackground)
+        }
+    }
+    
+    static var inverseOnBackgroundColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.inverseOnBackground) : UIColor(appTheme.light.inverseOnBackground)
+        }
+    }
+    
+    static var onSurfaceColor: UIColor {
+        return UIColor { traitCollection in
+            guard let appTheme = KvColorPalette.appThemePalette else { return .clear }
+            return traitCollection.userInterfaceStyle == .dark ? UIColor(appTheme.dark.onSurface) : UIColor(appTheme.light.onSurface)
         }
     }
 }

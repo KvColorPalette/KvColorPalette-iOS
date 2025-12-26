@@ -83,17 +83,25 @@ After initiate the swift package as above, you can access generate theme from an
 Color.themePalette // This returns the generate theme color pallet.
 ```
 In this `Color.themePalette` you will have following color attributes.
-|Attribute    |light-theme |dark-theme  |Description   |
-|-------------|------------|------------|--------------|
-|.base        |original    |original    |This is the base color given by the user.   |
-|.primary     |available   |available   |Suggesting primary color. This color can use for buttons, major component etc.   |
-|.secondary   |available   |available   |Suggesting secondary color. For any the secondary components which should not use by primary color.   |
-|.tertiary    |available   |available   |Suggesting tertiary color.   |
-|.quaternary  |available   |available   |Suggesting quaternary color.   |
-|.background  |available   |available   |Suggesting background color.   |
-|.onPrimary   |available   |available   |This is the color you can use on any component use primary color.   |
-|.onSecondary |available   |available   |This is the color you can use on any component use secondary color.   |
-|.shadow      |available   |available   |This is the color for your shadows.   |
+|Attribute              |light-theme |dark-theme  |Description   |
+|-----------------------|------------|------------|--------------|
+|.base                  |original    |original    |This is the base color given by the user.   |
+|.default               |available   |available   |This color defines LightMode -> White, DarkMode -> Black.   |
+|.inverseDefault        |available   |available   |This color defines LightMode -> Black, DarkMode -> White.   |
+|.primary               |available   |available   |Suggesting primary color. This color can use for buttons, major component etc.   |
+|.secondary             |available   |available   |Suggesting secondary color. For any the secondary components which should not use by primary color.   |
+|.tertiary              |available   |available   |Suggesting tertiary color.   |
+|.quaternary            |available   |available   |Suggesting quaternary color.   |
+|.background            |available   |available   |Suggesting background color.   |
+|.surface               |available   |available   |Suggesting surface color.   |
+|.scrim                 |available   |available   |Suggesting scrim color for background on dialog or bottom sheet   |
+|.shadow                |available   |available   |This is the color for your shadows.   |
+|.onPrimary             |available   |available   |This is the color you can use on any component use primary color.   |
+|.inverseOnPrimary      |available   |available   |This is the inverse color of onPrimary color.   |
+|.onSecondary           |available   |available   |This is the color you can use on any component use secondary color.   |
+|.onBackground          |available   |available   |This is the color you can use on any component use background color.   |
+|.inverseOnBackground   |available   |available   |This is the inverse color of onBackground color.   |
+|.onSurface             |available   |available   |This is the color you can use on any component use background color.   |
 
 #### Note:
 To use above `Color.themePalette`, initialization of the library is mandatory item. Because even without initialization, you will see `Color.themePalette` attribute in your application, but all the colors it returns will be `.clear` color.
