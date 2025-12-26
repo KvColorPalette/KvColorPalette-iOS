@@ -61,13 +61,22 @@ public extension Color {
     public static var themePalette: ThemeColorPalette {
         return ThemeColorPalette(
             base: Color(UIColor.baseColor),
+            defaultColor: Color(UIColor.defaultColor),
+            inverseDefaultColor: Color(UIColor.inverseDefaultColor),
             primary: Color(UIColor.primaryColor),
             secondary: Color(UIColor.secondaryColor),
             tertiary: Color(UIColor.tertiaryColor),
             quaternary: Color(UIColor.quaternaryColor),
             background: Color(UIColor.backgroundColor),
+            surface: Color(UIColor.surfaceColor),
+            scrim: Color(UIColor.scrimColor),
+            shadow: Color(UIColor.shadowColor),
             onPrimary: Color(UIColor.onPrimaryColor),
+            inverseOnPrimary: Color(UIColor.inverseOnPrimaryColor),
             onSecondary: Color(UIColor.onSecondaryColor),
-            shadow: Color(UIColor.shadowColor))
+            onBackground: Color(UIColor.onBackgroundColor),
+            inverseOnBackground: Color(UIColor.inverseOnBackgroundColor),
+            onSurface: Color(UIColor.onSurfaceColor)
+        )
     }
 }

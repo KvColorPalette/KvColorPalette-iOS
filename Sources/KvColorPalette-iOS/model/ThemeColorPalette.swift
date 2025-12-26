@@ -28,24 +28,40 @@ public struct AppThemePalette {
  */
 public struct ThemeColorPalette {
     public let base: Color
+    public let defaultColor: Color
+    public let inverseDefaultColor: Color
     public let primary: Color
     public let secondary: Color
     public let tertiary: Color
     public let quaternary: Color
     public let background: Color
-    public let onPrimary: Color
-    public let onSecondary: Color
+    public let surface: Color
+    public let scrim: Color
     public let shadow: Color
+    public let onPrimary: Color
+    public let inverseOnPrimary: Color
+    public let onSecondary: Color
+    public let onBackground: Color
+    public let inverseOnBackground: Color
+    public let onSurface: Color
     
-    public init(base: Color, primary: Color, secondary: Color, tertiary: Color, quaternary: Color, background: Color, onPrimary: Color, onSecondary: Color, shadow: Color) {
+    public init(base: Color, defaultColor: Color, inverseDefaultColor: Color, primary: Color, secondary: Color, tertiary: Color, quaternary: Color, background: Color, surface: Color, scrim: Color, shadow: Color, onPrimary: Color, inverseOnPrimary: Color, onSecondary: Color, onBackground: Color, inverseOnBackground: Color, onSurface: Color) {
         self.base = base
+        self.defaultColor = defaultColor
+        self.inverseDefaultColor = inverseDefaultColor
         self.primary = primary
         self.secondary = secondary
         self.tertiary = tertiary
         self.quaternary = quaternary
         self.background = background
-        self.onPrimary = onPrimary
-        self.onSecondary = onSecondary
+        self.surface = surface
+        self.scrim = scrim
         self.shadow = shadow
+        self.onPrimary = onPrimary
+        self.inverseOnPrimary = inverseOnPrimary
+        self.onSecondary = onSecondary
+        self.onBackground = onBackground
+        self.inverseOnBackground = inverseOnBackground
+        self.onSurface = onSurface
     }
 }
